@@ -1,16 +1,15 @@
-//
-//  PMLocation_extensions.m
-//  Pam
-//
-//  Created by Ian Dundas on 26/01/2014.
-//  Copyright (c) 2014 Ian Dundas. All rights reserved.
-//
-
-#import <CoreLocation/CoreLocation.h>
-#import "Location_extensions.h"
+#import "Location.h"
 #import "PMAnnotation.h"
 
-@implementation Location (model)
+
+@interface Location ()
+
+
+@end
+
+
+@implementation Location
+
 
 - (CLLocationCoordinate2D)coordinate {
     CLLocationCoordinate2D coord;
@@ -28,5 +27,4 @@
     }
     return _annotation;
 }
-
 @end

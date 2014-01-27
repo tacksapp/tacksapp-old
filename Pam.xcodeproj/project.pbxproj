@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		196569746BE2990FFF00AA06 /* Model in Resources */ = {isa = PBXBuildFile; fileRef = 196568D6F6E79C9FC50DD8E5 /* Model */; };
 		196569A2C2327B72CDA7889B /* PMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656EB8857BE8287C179491 /* PMAnnotation.m */; };
+		19656BB8288F9C049ACF3C5C /* Model in Resources */ = {isa = PBXBuildFile; fileRef = 196568D6F6E79C9FC50DD8E5 /* Model */; };
 		19656BCCE099F443A43AEBB3 /* PMMainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656F20C755D164DF702BA0 /* PMMainMapViewController.m */; };
 		3C7C681718941C600063C134 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7C681618941C600063C134 /* Foundation.framework */; };
 		3C7C681918941C600063C134 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7C681818941C600063C134 /* CoreGraphics.framework */; };
@@ -25,13 +27,6 @@
 		3C7C684218941C610063C134 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7C681C18941C600063C134 /* CoreData.framework */; };
 		3C7C684A18941C610063C134 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C7C684818941C610063C134 /* InfoPlist.strings */; };
 		3C7C684C18941C610063C134 /* PamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7C684B18941C610063C134 /* PamTests.m */; };
-		3C80B73218958B7E0054D71D /* Place_extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C80B73118958B7E0054D71D /* Place_extensions.m */; };
-		3C80B73D18958C0F0054D71D /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C80B73C18958C0F0054D71D /* Place.m */; };
-		3C80B73E18958C0F0054D71D /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C80B73C18958C0F0054D71D /* Place.m */; };
-		3C80B74118958C0F0054D71D /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C80B74018958C0F0054D71D /* Location.m */; };
-		3C80B74218958C0F0054D71D /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C80B74018958C0F0054D71D /* Location.m */; };
-		3C80B74618958DC30054D71D /* Location_extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C80B74518958DC30054D71D /* Location_extensions.m */; };
-		3C80B74718958DC30054D71D /* Location_extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C80B74518958DC30054D71D /* Location_extensions.m */; };
 		3C80B748189591DF0054D71D /* Pam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C7C683118941C600063C134 /* Pam.xcdatamodeld */; };
 		DD0391C032C2466582F0CEAD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B10C2B396A214CAA949FB53F /* libPods.a */; };
 		F6D26643FE384547B9449BCC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B10C2B396A214CAA949FB53F /* libPods.a */; };
@@ -49,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		1965681A13216209BDE74D86 /* PMMainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMainMapViewController.h; sourceTree = "<group>"; };
+		196568D6F6E79C9FC50DD8E5 /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Model; sourceTree = "<group>"; };
 		19656A1E9FEE43E9BB0260F6 /* PMAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMAnnotation.h; sourceTree = "<group>"; };
 		19656EB8857BE8287C179491 /* PMAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMAnnotation.m; sourceTree = "<group>"; };
 		19656F20C755D164DF702BA0 /* PMMainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMainMapViewController.m; sourceTree = "<group>"; };
@@ -71,15 +67,7 @@
 		3C7C684718941C610063C134 /* PamTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PamTests-Info.plist"; sourceTree = "<group>"; };
 		3C7C684918941C610063C134 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3C7C684B18941C610063C134 /* PamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PamTests.m; sourceTree = "<group>"; };
-		3C80B73018958B7E0054D71D /* Place_extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place_extensions.h; sourceTree = "<group>"; };
-		3C80B73118958B7E0054D71D /* Place_extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place_extensions.m; sourceTree = "<group>"; };
-		3C80B73B18958C0F0054D71D /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
-		3C80B73C18958C0F0054D71D /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
-		3C80B73F18958C0F0054D71D /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		3C80B74018958C0F0054D71D /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		3C80B74318958CD20054D71D /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
-		3C80B74418958DC30054D71D /* Location_extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location_extensions.h; sourceTree = "<group>"; };
-		3C80B74518958DC30054D71D /* Location_extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location_extensions.m; sourceTree = "<group>"; };
 		B10C2B396A214CAA949FB53F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E966F1EE9D054A7F85BAB9A6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,7 +170,7 @@
 				3C7C682E18941C600063C134 /* PMAppDelegate.m */,
 				3C7C683718941C600063C134 /* Images.xcassets */,
 				3C7C682318941C600063C134 /* Networking */,
-				3C7C683018941C600063C134 /* Models */,
+				3C7C683018941C600063C134 /* CoreData */,
 				3C7C682118941C600063C134 /* Supporting Files */,
 				196569B0DA82C31BB4AC8DB2 /* ViewControllers */,
 				196569436389B1FB51A73B2A /* Views */,
@@ -208,14 +196,14 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
-		3C7C683018941C600063C134 /* Models */ = {
+		3C7C683018941C600063C134 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				3C80B72F18958B550054D71D /* categories */,
+				196568D6F6E79C9FC50DD8E5 /* Model */,
 				3C80B72718958AE50054D71D /* careful... */,
 				3C80B74318958CD20054D71D /* Model.h */,
 			);
-			name = Models;
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 		3C7C684518941C610063C134 /* PamTests */ = {
@@ -240,31 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				3C7C683118941C600063C134 /* Pam.xcdatamodeld */,
-				3C80B72818958AF20054D71D /* generated */,
 			);
 			name = careful...;
-			sourceTree = "<group>";
-		};
-		3C80B72818958AF20054D71D /* generated */ = {
-			isa = PBXGroup;
-			children = (
-				3C80B73F18958C0F0054D71D /* Location.h */,
-				3C80B74018958C0F0054D71D /* Location.m */,
-				3C80B73B18958C0F0054D71D /* Place.h */,
-				3C80B73C18958C0F0054D71D /* Place.m */,
-			);
-			name = generated;
-			sourceTree = "<group>";
-		};
-		3C80B72F18958B550054D71D /* categories */ = {
-			isa = PBXGroup;
-			children = (
-				3C80B73018958B7E0054D71D /* Place_extensions.h */,
-				3C80B73118958B7E0054D71D /* Place_extensions.m */,
-				3C80B74418958DC30054D71D /* Location_extensions.h */,
-				3C80B74518958DC30054D71D /* Location_extensions.m */,
-			);
-			name = categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,6 +316,7 @@
 				3C7C683818941C600063C134 /* Images.xcassets in Resources */,
 				3C7C682018941C600063C134 /* Podfile in Resources */,
 				3C7C682A18941C600063C134 /* InfoPlist.strings in Resources */,
+				19656BB8288F9C049ACF3C5C /* Model in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C7C684A18941C610063C134 /* InfoPlist.strings in Resources */,
+				196569746BE2990FFF00AA06 /* Model in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,11 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C7C682C18941C600063C134 /* main.m in Sources */,
-				3C80B74118958C0F0054D71D /* Location.m in Sources */,
 				3C7C683318941C600063C134 /* Pam.xcdatamodeld in Sources */,
-				3C80B73D18958C0F0054D71D /* Place.m in Sources */,
-				3C80B74618958DC30054D71D /* Location_extensions.m in Sources */,
-				3C80B73218958B7E0054D71D /* Place_extensions.m in Sources */,
 				3C7C682F18941C600063C134 /* PMAppDelegate.m in Sources */,
 				19656BCCE099F443A43AEBB3 /* PMMainMapViewController.m in Sources */,
 				196569A2C2327B72CDA7889B /* PMAnnotation.m in Sources */,
@@ -463,10 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C80B748189591DF0054D71D /* Pam.xcdatamodeld in Sources */,
-				3C80B73E18958C0F0054D71D /* Place.m in Sources */,
-				3C80B74218958C0F0054D71D /* Location.m in Sources */,
 				3C7C684C18941C610063C134 /* PamTests.m in Sources */,
-				3C80B74718958DC30054D71D /* Location_extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

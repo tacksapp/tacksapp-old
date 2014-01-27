@@ -10,7 +10,6 @@
 #define Pam_model_h
 
 #import <CoreData/CoreData.h>
-#import "Location.h"
-#import "Place.h"
+#import "Model_entities.h"
 
 #endif
