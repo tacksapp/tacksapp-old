@@ -8,14 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class PMPlacesMenuViewController;
+@class JSSlidingViewController;
+
 @interface PMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (readonly, strong, nonatomic) NSManagedObjectContext *moContext;
-
-- (void)saveContext;
-
 @property (strong, nonatomic) UINavigationController *navigationController;
+@property (strong, nonatomic) PMPlacesMenuViewController *menuViewController;
+@property (strong, nonatomic) JSSlidingViewController *slidingViewController;
 
 @end

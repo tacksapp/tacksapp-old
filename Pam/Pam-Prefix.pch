@@ -10,4 +10,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+    #import "ObjectiveRecord.h"
+
+    #define AppDelegate ((PMAppDelegate *)[[UIApplication sharedApplication] delegate])
 #endif

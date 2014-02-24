@@ -17,19 +17,24 @@ PODS:
   - AFNetworking/Serialization (2.1.0)
   - AFNetworking/UIKit (2.1.0):
     - AFNetworking/NSURLConnection
-  - DVCoreDataFinders (0.5)
+  - ObjectiveRecord (1.4.0):
+    - ObjectiveSugar
   - ObjectiveSugar (1.1.0)
   - OCMapView (0.1.0)
 
 DEPENDENCIES:
   - AFNetworking
-  - DVCoreDataFinders (~> 0.5)
+  - ObjectiveRecord (from `https://github.com/supermarin/ObjectiveRecord.git`)
   - ObjectiveSugar
   - OCMapView (~> 0.1.0)
 
+EXTERNAL SOURCES:
+  ObjectiveRecord:
+    :git: https://github.com/supermarin/ObjectiveRecord.git
+
 SPEC CHECKSUMS:
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
-  DVCoreDataFinders: 3576e54c99062509e4db5b91e83780832fdc0091
+  ObjectiveRecord: 109a6c583284c2c9af1dc0d6ccc1dfc84e826c45
   ObjectiveSugar: fed588577bcf9733546aeaa089de444e4bab9a52
   OCMapView: 791bb2afa36034eb6b772d0ddbeb6685bc726e26
 

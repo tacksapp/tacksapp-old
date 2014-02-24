@@ -4,7 +4,8 @@ pod "AFNetworking"
 
 pod 'OCMapView', '~> 0.1.0'
 
-pod 'DVCoreDataFinders', '~> 0.5'
+#pod 'DVCoreDataFinders', '~> 0.5'
+pod 'ObjectiveRecord', :git => 'https://github.com/supermarin/ObjectiveRecord.git'
 pod 'ObjectiveSugar'
 
 #link_with 'PamTests'

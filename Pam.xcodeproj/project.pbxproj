@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19656BCCE099F443A43AEBB3 /* PMMainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656F20C755D164DF702BA0 /* PMMainMapViewController.m */; };
+		196561DCA8C4BBAC1E7D8E33 /* frontViewControllerDropShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196561E9813AB966EA5EF5B7 /* frontViewControllerDropShadow@2x.png */; };
+		196565CD8B1148C8DD8D7572 /* PMMainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196567B1F1E58495654BEFF0 /* PMMainMapViewController.m */; };
+		19656621D16BDC5051CF41DF /* frontViewControllerDropShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 19656014DDA2A31A7118CA3D /* frontViewControllerDropShadow.png */; };
+		19656B3B4497BC1502ED4007 /* PMLocationsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656402BAFD233244331AA3 /* PMLocationsMenuViewController.m */; };
+		19656D8FE9BFF39C2CBFB0B6 /* MKMapView+zooming.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656586EA4A50146A00C0D5 /* MKMapView+zooming.m */; };
+		19656D9E8071E44FA9515C2A /* PMTemporaryAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 196561B96C3CA723B7D7EEEA /* PMTemporaryAnnotation.m */; };
+		19656E2CDDC4476083C4D1D9 /* PMPlacesMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656FB553E8F95280F5FC7A /* PMPlacesMenuViewController.m */; };
+		19656FC34A1A2479C53C558D /* JSSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656D034A86855BD96381EA /* JSSlidingViewController.m */; };
 		3C7C681718941C600063C134 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7C681618941C600063C134 /* Foundation.framework */; };
 		3C7C681918941C600063C134 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7C681818941C600063C134 /* CoreGraphics.framework */; };
 		3C7C681B18941C600063C134 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7C681A18941C600063C134 /* UIKit.framework */; };
@@ -26,17 +33,10 @@
 		3C7C684C18941C610063C134 /* PamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7C684B18941C610063C134 /* PamTests.m */; };
 		3C80B748189591DF0054D71D /* Pam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C7C683118941C600063C134 /* Pam.xcdatamodeld */; };
 		3CC217131896F3DA00BC8E0C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC217121896F3D900BC8E0C /* MapKit.framework */; };
-		3CC217191896F69F00BC8E0C /* _Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC217161896F69F00BC8E0C /* _Location.m */; };
-		3CC2171A1896F69F00BC8E0C /* _Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC217161896F69F00BC8E0C /* _Location.m */; };
-		3CC2171B1896F69F00BC8E0C /* _Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC217181896F69F00BC8E0C /* _Place.m */; };
-		3CC2171C1896F69F00BC8E0C /* _Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC217181896F69F00BC8E0C /* _Place.m */; };
 		3CC217231896F6B200BC8E0C /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC2171F1896F6B200BC8E0C /* Location.m */; };
 		3CC217241896F6B200BC8E0C /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC2171F1896F6B200BC8E0C /* Location.m */; };
 		3CC217251896F6B200BC8E0C /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC217221896F6B200BC8E0C /* Place.m */; };
 		3CC217261896F6B200BC8E0C /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC217221896F6B200BC8E0C /* Place.m */; };
-		3CC2172D189702D600BC8E0C /* JSSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC2172A189702D600BC8E0C /* JSSlidingViewController.m */; };
-		3CC2172E189702D600BC8E0C /* frontViewControllerDropShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CC2172B189702D600BC8E0C /* frontViewControllerDropShadow.png */; };
-		3CC2172F189702D600BC8E0C /* frontViewControllerDropShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CC2172C189702D600BC8E0C /* frontViewControllerDropShadow@2x.png */; };
 		DD0391C032C2466582F0CEAD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B10C2B396A214CAA949FB53F /* libPods.a */; };
 		F6D26643FE384547B9449BCC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B10C2B396A214CAA949FB53F /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -52,14 +52,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1965681A13216209BDE74D86 /* PMMainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMainMapViewController.h; sourceTree = "<group>"; };
-		19656F20C755D164DF702BA0 /* PMMainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMainMapViewController.m; sourceTree = "<group>"; };
+		19656014DDA2A31A7118CA3D /* frontViewControllerDropShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frontViewControllerDropShadow.png; sourceTree = "<group>"; };
+		196561B96C3CA723B7D7EEEA /* PMTemporaryAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTemporaryAnnotation.m; sourceTree = "<group>"; };
+		196561E9813AB966EA5EF5B7 /* frontViewControllerDropShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frontViewControllerDropShadow@2x.png"; sourceTree = "<group>"; };
+		196561F95517EA9160759C38 /* PMLocationsMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLocationsMenuViewController.h; sourceTree = "<group>"; };
+		19656402BAFD233244331AA3 /* PMLocationsMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMLocationsMenuViewController.m; sourceTree = "<group>"; };
+		19656586EA4A50146A00C0D5 /* MKMapView+zooming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+zooming.m"; sourceTree = "<group>"; };
+		1965674AB0F42EF948E2540A /* JSSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSlidingViewController.h; sourceTree = "<group>"; };
+		1965675F9D2CC599CE3783EE /* PMMainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMainMapViewController.h; sourceTree = "<group>"; };
+		196567B1F1E58495654BEFF0 /* PMMainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMainMapViewController.m; sourceTree = "<group>"; };
+		196567F1A3B76305B385D319 /* PMTemporaryAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTemporaryAnnotation.h; sourceTree = "<group>"; };
+		196568EFE21E6EAE78AD6208 /* PMPlacesMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPlacesMenuViewController.h; sourceTree = "<group>"; };
+		196569D6563218CC4B4320A7 /* MKMapView+zooming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+zooming.h"; sourceTree = "<group>"; };
+		19656D034A86855BD96381EA /* JSSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSlidingViewController.m; sourceTree = "<group>"; };
+		19656FB553E8F95280F5FC7A /* PMPlacesMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPlacesMenuViewController.m; sourceTree = "<group>"; };
 		3C7C681318941C600063C134 /* Pam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C7C681618941C600063C134 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3C7C681818941C600063C134 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3C7C681A18941C600063C134 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3C7C681C18941C600063C134 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		3C7C681F18941C600063C134 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3C7C681F18941C600063C134 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3C7C682218941C600063C134 /* Pam-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pam-Prefix.pch"; sourceTree = "<group>"; };
 		3C7C682718941C600063C134 /* Pam-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pam-Info.plist"; sourceTree = "<group>"; };
 		3C7C682918941C600063C134 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -74,19 +86,11 @@
 		3C7C684918941C610063C134 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3C7C684B18941C610063C134 /* PamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PamTests.m; sourceTree = "<group>"; };
 		3CC217121896F3D900BC8E0C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		3CC217151896F69F00BC8E0C /* _Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Location.h; sourceTree = "<group>"; };
-		3CC217161896F69F00BC8E0C /* _Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Location.m; sourceTree = "<group>"; };
-		3CC217171896F69F00BC8E0C /* _Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Place.h; sourceTree = "<group>"; };
-		3CC217181896F69F00BC8E0C /* _Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Place.m; sourceTree = "<group>"; };
 		3CC2171E1896F6B200BC8E0C /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		3CC2171F1896F6B200BC8E0C /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		3CC217201896F6B200BC8E0C /* Model_entities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model_entities.h; sourceTree = "<group>"; };
 		3CC217211896F6B200BC8E0C /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
 		3CC217221896F6B200BC8E0C /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
-		3CC21729189702D600BC8E0C /* JSSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSlidingViewController.h; sourceTree = "<group>"; };
-		3CC2172A189702D600BC8E0C /* JSSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSlidingViewController.m; sourceTree = "<group>"; };
-		3CC2172B189702D600BC8E0C /* frontViewControllerDropShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frontViewControllerDropShadow.png; sourceTree = "<group>"; };
-		3CC2172C189702D600BC8E0C /* frontViewControllerDropShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frontViewControllerDropShadow@2x.png"; sourceTree = "<group>"; };
 		B10C2B396A214CAA949FB53F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E966F1EE9D054A7F85BAB9A6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,11 +124,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		196561FDF1837F44F5E92E49 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				196567B1F1E58495654BEFF0 /* PMMainMapViewController.m */,
+				1965675F9D2CC599CE3783EE /* PMMainMapViewController.h */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
 		196567037C92F7F5D2B69EAF /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				196561B96C3CA723B7D7EEEA /* PMTemporaryAnnotation.m */,
+				196567F1A3B76305B385D319 /* PMTemporaryAnnotation.h */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		196567834D0EA603AD454434 /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				196568E5614B3649D22AB440 /* JSSlidingViewController */,
+			);
+			name = "Third Party";
+			sourceTree = "<group>";
+		};
+		196568E5614B3649D22AB440 /* JSSlidingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1965674AB0F42EF948E2540A /* JSSlidingViewController.h */,
+				19656D034A86855BD96381EA /* JSSlidingViewController.m */,
+				19656014DDA2A31A7118CA3D /* frontViewControllerDropShadow.png */,
+				196561E9813AB966EA5EF5B7 /* frontViewControllerDropShadow@2x.png */,
+			);
+			path = JSSlidingViewController;
 			sourceTree = "<group>";
 		};
 		196569436389B1FB51A73B2A /* Views */ = {
@@ -138,19 +172,42 @@
 		196569B0DA82C31BB4AC8DB2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				19656F20C755D164DF702BA0 /* PMMainMapViewController.m */,
-				1965681A13216209BDE74D86 /* PMMainMapViewController.h */,
+				196561FDF1837F44F5E92E49 /* Maps */,
+				19656CB0B21E96563F9962E5 /* Menu */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		19656CB0B21E96563F9962E5 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				196568EFE21E6EAE78AD6208 /* PMPlacesMenuViewController.h */,
+				19656FB553E8F95280F5FC7A /* PMPlacesMenuViewController.m */,
+				19656402BAFD233244331AA3 /* PMLocationsMenuViewController.m */,
+				196561F95517EA9160759C38 /* PMLocationsMenuViewController.h */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		19656DF2D7BD1DC2CD74E7B2 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				19656586EA4A50146A00C0D5 /* MKMapView+zooming.m */,
+				196569D6563218CC4B4320A7 /* MKMapView+zooming.h */,
+			);
+			name = Categories;
+			path = categories;
 			sourceTree = "<group>";
 		};
 		3C7C680A18941C600063C134 = {
 			isa = PBXGroup;
 			children = (
 				3C7C681E18941C600063C134 /* Pam */,
+				3C7C682118941C600063C134 /* Supporting Files */,
 				3C7C684518941C610063C134 /* PamTests */,
 				3C7C681518941C600063C134 /* Frameworks */,
 				3C7C681418941C600063C134 /* Products */,
+				3C7C681F18941C600063C134 /* Podfile */,
 				E966F1EE9D054A7F85BAB9A6 /* Pods.xcconfig */,
 			);
 			indentWidth = 4;
@@ -185,14 +242,14 @@
 			isa = PBXGroup;
 			children = (
 				3CC2171D1896F6AA00BC8E0C /* Model */,
-				3C7C681F18941C600063C134 /* Podfile */,
 				3C7C682D18941C600063C134 /* PMAppDelegate.h */,
 				3C7C682E18941C600063C134 /* PMAppDelegate.m */,
 				3C7C683718941C600063C134 /* Images.xcassets */,
 				3C7C682318941C600063C134 /* Networking */,
-				3C7C682118941C600063C134 /* Supporting Files */,
 				196569B0DA82C31BB4AC8DB2 /* ViewControllers */,
 				196569436389B1FB51A73B2A /* Views */,
+				19656DF2D7BD1DC2CD74E7B2 /* Categories */,
+				196567834D0EA603AD454434 /* Third Party */,
 			);
 			path = Pam;
 			sourceTree = "<group>";
@@ -200,7 +257,6 @@
 		3C7C682118941C600063C134 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3CC21727189702BD00BC8E0C /* Third Party */,
 				3C7C683018941C600063C134 /* CoreData */,
 				3C7C682218941C600063C134 /* Pam-Prefix.pch */,
 				3C7C682718941C600063C134 /* Pam-Info.plist */,
@@ -208,6 +264,7 @@
 				3C7C682B18941C600063C134 /* main.m */,
 			);
 			name = "Supporting Files";
+			path = Pam;
 			sourceTree = "<group>";
 		};
 		3C7C682318941C600063C134 /* Networking */ = {
@@ -220,7 +277,6 @@
 		3C7C683018941C600063C134 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				3CC217141896F69200BC8E0C /* generated */,
 				3C80B72718958AE50054D71D /* careful... */,
 			);
 			name = CoreData;
@@ -252,17 +308,6 @@
 			name = careful...;
 			sourceTree = "<group>";
 		};
-		3CC217141896F69200BC8E0C /* generated */ = {
-			isa = PBXGroup;
-			children = (
-				3CC217151896F69F00BC8E0C /* _Location.h */,
-				3CC217161896F69F00BC8E0C /* _Location.m */,
-				3CC217171896F69F00BC8E0C /* _Place.h */,
-				3CC217181896F69F00BC8E0C /* _Place.m */,
-			);
-			name = generated;
-			sourceTree = "<group>";
-		};
 		3CC2171D1896F6AA00BC8E0C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,25 +318,6 @@
 				3CC217221896F6B200BC8E0C /* Place.m */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		3CC21727189702BD00BC8E0C /* Third Party */ = {
-			isa = PBXGroup;
-			children = (
-				3CC21728189702D600BC8E0C /* JSSlidingViewController */,
-			);
-			name = "Third Party";
-			sourceTree = "<group>";
-		};
-		3CC21728189702D600BC8E0C /* JSSlidingViewController */ = {
-			isa = PBXGroup;
-			children = (
-				3CC21729189702D600BC8E0C /* JSSlidingViewController.h */,
-				3CC2172A189702D600BC8E0C /* JSSlidingViewController.m */,
-				3CC2172B189702D600BC8E0C /* frontViewControllerDropShadow.png */,
-				3CC2172C189702D600BC8E0C /* frontViewControllerDropShadow@2x.png */,
-			);
-			path = JSSlidingViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,10 +402,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C7C683818941C600063C134 /* Images.xcassets in Resources */,
-				3CC2172E189702D600BC8E0C /* frontViewControllerDropShadow.png in Resources */,
 				3C7C682018941C600063C134 /* Podfile in Resources */,
 				3C7C682A18941C600063C134 /* InfoPlist.strings in Resources */,
-				3CC2172F189702D600BC8E0C /* frontViewControllerDropShadow@2x.png in Resources */,
+				19656621D16BDC5051CF41DF /* frontViewControllerDropShadow.png in Resources */,
+				196561DCA8C4BBAC1E7D8E33 /* frontViewControllerDropShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,12 +504,14 @@
 				3C7C682C18941C600063C134 /* main.m in Sources */,
 				3C7C683318941C600063C134 /* Pam.xcdatamodeld in Sources */,
 				3C7C682F18941C600063C134 /* PMAppDelegate.m in Sources */,
-				19656BCCE099F443A43AEBB3 /* PMMainMapViewController.m in Sources */,
-				3CC217191896F69F00BC8E0C /* _Location.m in Sources */,
 				3CC217251896F6B200BC8E0C /* Place.m in Sources */,
 				3CC217231896F6B200BC8E0C /* Location.m in Sources */,
-				3CC2172D189702D600BC8E0C /* JSSlidingViewController.m in Sources */,
-				3CC2171B1896F69F00BC8E0C /* _Place.m in Sources */,
+				19656D9E8071E44FA9515C2A /* PMTemporaryAnnotation.m in Sources */,
+				19656D8FE9BFF39C2CBFB0B6 /* MKMapView+zooming.m in Sources */,
+				19656FC34A1A2479C53C558D /* JSSlidingViewController.m in Sources */,
+				196565CD8B1148C8DD8D7572 /* PMMainMapViewController.m in Sources */,
+				19656E2CDDC4476083C4D1D9 /* PMPlacesMenuViewController.m in Sources */,
+				19656B3B4497BC1502ED4007 /* PMLocationsMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,10 +521,8 @@
 			files = (
 				3C80B748189591DF0054D71D /* Pam.xcdatamodeld in Sources */,
 				3CC217241896F6B200BC8E0C /* Location.m in Sources */,
-				3CC2171A1896F69F00BC8E0C /* _Location.m in Sources */,
 				3CC217261896F6B200BC8E0C /* Place.m in Sources */,
 				3C7C684C18941C610063C134 /* PamTests.m in Sources */,
-				3CC2171C1896F69F00BC8E0C /* _Place.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,7 +560,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -586,7 +611,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -662,7 +686,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E966F1EE9D054A7F85BAB9A6 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Pam.app/Pam";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -687,7 +710,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E966F1EE9D054A7F85BAB9A6 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Pam.app/Pam";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

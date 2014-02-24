@@ -7,9 +7,7 @@
 
 @end
 
-
 @implementation Place
-
-// Custom logic goes here.
+@dynamic locations, title;
 
 @end

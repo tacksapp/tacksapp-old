@@ -1,5 +1,6 @@
-#import "_Place.h"
 
-@interface Place : _Place {}
-// Custom logic goes here.
+@interface Place : NSManagedObject
+
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSSet *locations;
 @end
