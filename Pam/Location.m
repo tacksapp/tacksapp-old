@@ -47,7 +47,6 @@
 
     if (!annotation){
         annotation= [[PMAnnotation alloc]initWithLocation:self];
-        NSLog(@"Adding to shared: %@", [Location sharedAnnotations]);
         [[Location sharedAnnotations] setObject:annotation forKey:self.objectID];
     }
     return annotation;

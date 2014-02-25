@@ -18,7 +18,6 @@
 
 @property(nonatomic, strong) UIButton *centreMapButton;
 @property(nonatomic, strong) UIButton *revealMenuButton;
-@property(nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property(nonatomic, strong) id<MKAnnotation> selectedAnnotation;
 
 @property(nonatomic, weak) MKUserLocation *userLocation; // todo: strong?
@@ -63,16 +62,9 @@
 
 #pragma mark MapDisplayProtocol Delegate methods:
 - (void)focusLocation:(Location *)location {
-    NSLog(@"Focusing: %@", location);
     [self focusCoordinate:location.coordinate];
 }
 - (void)selectLocation:(Location *)location {
-    NSLog(@"Selecting annotation: %@", location.annotation, location.annotation.description);
-
-    [self.mapView.annotations each:^(id object) {
-        NSLog(@"Existing annotation: %@", object);
-    }];
-
     [self focusLocation:location];
     [self.mapView selectAnnotation:location.annotation animated:YES];
 }
@@ -85,51 +77,27 @@
     self.userLocation= userLocation;
 }
 - (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>)annotation{
-    // if it's a cluster
 
-    MKPinAnnotationView *pinView = nil;
+    if ([annotation isKindOfClass:MKUserLocation.class])
+        return nil; // keep the blue dot.
 
     static NSString *defaultPinID = @"identifier";
-    pinView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
 
-    if ( pinView == nil )
-    {
+    MKPinAnnotationView *pinView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+    if (pinView == nil){
         pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
-
         pinView.enabled = YES;
         pinView.canShowCallout = YES;
 
 //        UIButton *btn = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//
 //        //Accessoryview for the annotation view in ios.
 //        pinView.rightCalloutAccessoryView = btn;
     }
-    else
-    {
+    else{
         pinView.annotation = annotation;
     }
 
-
-    if ([annotation isKindOfClass:[OCAnnotation class]]) {
-        pinView.pinColor = MKPinAnnotationColorGreen;  //or Green or Purple
-
-        // create your custom cluster annotationView here!
-        NSLog(@"Is a cluster containing: ");
-        [((OCAnnotation *) annotation).annotationsInCluster each:^(id object) {
-            NSLog(@" -> %@", object);
-        }];
-
-    }
-    else{
-        pinView.pinColor = MKPinAnnotationColorRed;  //or Green or Purple
-    }
-//    // If it's a single annotation
-//    else if([annotation isKindOfClass:[Your_Annotation class]]){
-
-
-//        return pinView;
-//    }
-//    return Your_annotationView;
+    pinView.pinColor = MKPinAnnotationColorRed;  //or Green or Purple
     return pinView;
 }
 

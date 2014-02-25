@@ -6,7 +6,6 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@class OCMapView;
 @class Location;
 
 @protocol MapDisplayProtocol
