@@ -3,16 +3,18 @@
 // Copyright (c) 2014 Ian Dundas. All rights reserved.
 //
 
+#import <ObjectiveSugar/NSArray+ObjectiveSugar.h>
+#import <ObjectiveSugar/NSString+ObjectiveSugar.h>
 #import "PMPlacesMenuViewController.h"
 #import "Place.h"
 #import "PMLocationsMenuViewController.h"
-#import "PMMainMapViewController.h"
+#import "PMMapViewController.h"
 
 static NSString* cellIdentifier = @"PMRootMenuViewControllerCell";
 
-@interface PMPlacesMenuViewController ()
+@interface PMPlacesMenuViewController ()<UIGestureRecognizerDelegate, UIAlertViewDelegate>
 @property(nonatomic, strong) NSArray *places;
-
+- (void)didLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
 @end
 
 @implementation PMPlacesMenuViewController {
@@ -24,8 +26,59 @@ static NSString* cellIdentifier = @"PMRootMenuViewControllerCell";
     [self setTitle:@"Places"];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
 
+    self.navigationItem.leftBarButtonItem= [[UIBarButtonItem alloc]
+            initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(startAddPlace)];
+
+    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(didLongPress:)];
+    longPressGestureRecognizer.minimumPressDuration = 1; //seconds
+    longPressGestureRecognizer.delegate = self;
+    [self.tableView addGestureRecognizer:longPressGestureRecognizer];
+
     [self refreshData];
 }
+
+#pragma mark Gesture Recognisers:
+-(void)didLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state==UIGestureRecognizerStateBegan){
+        CGPoint point = [gestureRecognizer locationInView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+        if (indexPath){
+            // Want to set this row as default
+            Place *newDefaultPlace= [self.places objectAtIndex:(NSUInteger) indexPath.row];
+
+            [[Place all] each:^(Place *place) {
+                place.isDefault = place==newDefaultPlace;
+            }];
+
+            [self refreshData];
+        }
+    }
+}
+
+
+#pragma mark Add Location
+- (void)startAddPlace {
+    // TODO: implement with semi-transparent modal instead
+
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"New Place" message:@"Please enter place name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
+
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==1){
+        NSString *placeName= [[alertView textFieldAtIndex:0] text];
+
+        Place *place=[Place create:@{
+                @"title" : placeName,
+        }];
+        [place save];
+
+        [self refreshData];
+    }
+}
+
 
 - (void)refreshData {
     self.places = [Place all];
@@ -49,7 +102,8 @@ static NSString* cellIdentifier = @"PMRootMenuViewControllerCell";
 
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     Place *place= [self.places objectAtIndex:(NSUInteger) indexPath.row];
-    [cell.textLabel setText:place.title];
+
+    [cell.textLabel setText:NSStringWithFormat (@"%@%@", place.title, [place isDefault]?@"!":@"")];
 }
 
 #pragma mark UITableViewDelegate

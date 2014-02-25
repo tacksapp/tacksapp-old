@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		196561DCA8C4BBAC1E7D8E33 /* frontViewControllerDropShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196561E9813AB966EA5EF5B7 /* frontViewControllerDropShadow@2x.png */; };
-		196565CD8B1148C8DD8D7572 /* PMMainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196567B1F1E58495654BEFF0 /* PMMainMapViewController.m */; };
+		196565CD8B1148C8DD8D7572 /* PMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196567B1F1E58495654BEFF0 /* PMMapViewController.m */; };
 		19656621D16BDC5051CF41DF /* frontViewControllerDropShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 19656014DDA2A31A7118CA3D /* frontViewControllerDropShadow.png */; };
 		19656B3B4497BC1502ED4007 /* PMLocationsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656402BAFD233244331AA3 /* PMLocationsMenuViewController.m */; };
+		19656CAEEB7C71F95ABC5F2C /* PMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1965601A3F423603B697151B /* PMAnnotation.m */; };
 		19656D8FE9BFF39C2CBFB0B6 /* MKMapView+zooming.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656586EA4A50146A00C0D5 /* MKMapView+zooming.m */; };
 		19656D9E8071E44FA9515C2A /* PMTemporaryAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 196561B96C3CA723B7D7EEEA /* PMTemporaryAnnotation.m */; };
 		19656E2CDDC4476083C4D1D9 /* PMPlacesMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656FB553E8F95280F5FC7A /* PMPlacesMenuViewController.m */; };
@@ -53,14 +54,16 @@
 
 /* Begin PBXFileReference section */
 		19656014DDA2A31A7118CA3D /* frontViewControllerDropShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frontViewControllerDropShadow.png; sourceTree = "<group>"; };
+		1965601A3F423603B697151B /* PMAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMAnnotation.m; sourceTree = "<group>"; };
 		196561B96C3CA723B7D7EEEA /* PMTemporaryAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTemporaryAnnotation.m; sourceTree = "<group>"; };
 		196561E9813AB966EA5EF5B7 /* frontViewControllerDropShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frontViewControllerDropShadow@2x.png"; sourceTree = "<group>"; };
 		196561F95517EA9160759C38 /* PMLocationsMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLocationsMenuViewController.h; sourceTree = "<group>"; };
+		19656234E97519E9B68DC7A4 /* PMAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMAnnotation.h; sourceTree = "<group>"; };
 		19656402BAFD233244331AA3 /* PMLocationsMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMLocationsMenuViewController.m; sourceTree = "<group>"; };
 		19656586EA4A50146A00C0D5 /* MKMapView+zooming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+zooming.m"; sourceTree = "<group>"; };
 		1965674AB0F42EF948E2540A /* JSSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSlidingViewController.h; sourceTree = "<group>"; };
-		1965675F9D2CC599CE3783EE /* PMMainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMainMapViewController.h; sourceTree = "<group>"; };
-		196567B1F1E58495654BEFF0 /* PMMainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMainMapViewController.m; sourceTree = "<group>"; };
+		1965675F9D2CC599CE3783EE /* PMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMapViewController.h; sourceTree = "<group>"; };
+		196567B1F1E58495654BEFF0 /* PMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMapViewController.m; sourceTree = "<group>"; };
 		196567F1A3B76305B385D319 /* PMTemporaryAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTemporaryAnnotation.h; sourceTree = "<group>"; };
 		196568EFE21E6EAE78AD6208 /* PMPlacesMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPlacesMenuViewController.h; sourceTree = "<group>"; };
 		196569D6563218CC4B4320A7 /* MKMapView+zooming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+zooming.h"; sourceTree = "<group>"; };
@@ -127,8 +130,8 @@
 		196561FDF1837F44F5E92E49 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				196567B1F1E58495654BEFF0 /* PMMainMapViewController.m */,
-				1965675F9D2CC599CE3783EE /* PMMainMapViewController.h */,
+				196567B1F1E58495654BEFF0 /* PMMapViewController.m */,
+				1965675F9D2CC599CE3783EE /* PMMapViewController.h */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -138,6 +141,8 @@
 			children = (
 				196561B96C3CA723B7D7EEEA /* PMTemporaryAnnotation.m */,
 				196567F1A3B76305B385D319 /* PMTemporaryAnnotation.h */,
+				1965601A3F423603B697151B /* PMAnnotation.m */,
+				19656234E97519E9B68DC7A4 /* PMAnnotation.h */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -509,9 +514,10 @@
 				19656D9E8071E44FA9515C2A /* PMTemporaryAnnotation.m in Sources */,
 				19656D8FE9BFF39C2CBFB0B6 /* MKMapView+zooming.m in Sources */,
 				19656FC34A1A2479C53C558D /* JSSlidingViewController.m in Sources */,
-				196565CD8B1148C8DD8D7572 /* PMMainMapViewController.m in Sources */,
+				196565CD8B1148C8DD8D7572 /* PMMapViewController.m in Sources */,
 				19656E2CDDC4476083C4D1D9 /* PMPlacesMenuViewController.m in Sources */,
 				19656B3B4497BC1502ED4007 /* PMLocationsMenuViewController.m in Sources */,
+				19656CAEEB7C71F95ABC5F2C /* PMAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

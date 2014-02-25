@@ -14,7 +14,6 @@
 -(void) selectLocation:(Location*)location;
 @end
 
-@interface PMMainMapViewController : UIViewController <MapDisplayProtocol>
-
-@property (nonatomic, strong) OCMapView *mapView;
+@interface PMMapViewController : UIViewController <MapDisplayProtocol>
+@property (nonatomic, strong) MKMapView *mapView;
 @end

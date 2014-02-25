@@ -6,7 +6,7 @@
 #import "PMLocationsMenuViewController.h"
 #import "Place.h"
 #import "Location.h"
-#import "PMMainMapViewController.h"
+#import "PMMapViewController.h"
 #import "PMAppDelegate.h"
 #import "JSSlidingViewController.h"
 
@@ -14,6 +14,7 @@ static NSString* cellIdentifier = @"PMLocationsMenuViewControllerCell";
 
 @interface PMLocationsMenuViewController ()
 @property(nonatomic, strong) NSArray *locations;
+
 @end
 
 @implementation PMLocationsMenuViewController {
@@ -29,7 +30,7 @@ static NSString* cellIdentifier = @"PMLocationsMenuViewControllerCell";
 }
 
 - (void)refreshData {
-    self.locations = [Location where:@{@"place" : self.place}];
+    self.locations = [Location where:@{@"place" : self.place} order:@{@"title" : @"ASC"}];
     [self.tableView reloadData];
 }
 
@@ -59,8 +60,8 @@ static NSString* cellIdentifier = @"PMLocationsMenuViewControllerCell";
     __weak typeof(self)weakSelf = self;
     [[AppDelegate slidingViewController] closeSlider:YES completion:^{
         __strong typeof(weakSelf)strongSelf = weakSelf;
-
-        [strongSelf.delegate selectLocation:[strongSelf.locations objectAtIndex:(NSUInteger)indexPath.row]];
+        Location *location= [strongSelf.locations objectAtIndex:(NSUInteger)indexPath.row];
+        [strongSelf.delegate selectLocation:location];
     }];
 }
 

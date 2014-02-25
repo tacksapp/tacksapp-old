@@ -9,7 +9,7 @@
 #import <MapKit/MapKit.h>
 #import "PMAppDelegate.h"
 #import "AFNetworkActivityIndicatorManager.h"
-#import "PMMainMapViewController.h"
+#import "PMMapViewController.h"
 #import "Location.h"
 #import "JSSlidingViewController.h"
 #import "PMPlacesMenuViewController.h"
@@ -27,12 +27,17 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
     [self createSomeDevRecords];
 
-    PMMainMapViewController *mainMapViewController = [[PMMainMapViewController alloc] initWithNibName:nil bundle:nil];
+    PMMapViewController *mainMapViewController = [[PMMapViewController alloc] initWithNibName:nil bundle:nil];
 
     self.menuViewController= [[PMPlacesMenuViewController alloc] initWithStyle:UITableViewStylePlain];
     [self.menuViewController setDelegate:mainMapViewController];
 
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.menuViewController];
+    CGRect frame= self.navigationController.view.frame;
+    frame.size.width=270.0f;
+    [self.navigationController.view setFrame:frame];
+
+
 
     self.slidingViewController= [[JSSlidingViewController alloc] initWithFrontViewController:mainMapViewController backViewController:self.navigationController];
     self.slidingViewController.useBouncyAnimations=NO;
@@ -82,13 +87,28 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
     Place *place=[Place create:@{
          @"title" : @"Amsterdam",
+         @"isDefault": @YES,
     }];
 
     [Location create:@{
-        @"title": @"Home",
-        @"latitude":@52.373468,
-        @"longitude":@4.8501605,
-        @"place": place,
+            @"title": @"Home",
+            @"latitude":@52.373468,
+            @"longitude":@4.8501605,
+            @"place": place,
+    }];
+
+    [Location create:@{
+            @"title": @"Work",
+            @"latitude":@52.473468,
+            @"longitude":@4.9501605,
+            @"place": place,
+    }];
+
+    [Location create:@{
+            @"title": @"Party",
+            @"latitude":@52.273468,
+            @"longitude":@4.1501605,
+            @"place": place,
     }];
 
     [place save];
