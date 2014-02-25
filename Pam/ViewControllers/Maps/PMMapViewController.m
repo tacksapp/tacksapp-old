@@ -64,6 +64,11 @@
 - (void)focusLocation:(Location *)location {
     [self focusCoordinate:location.coordinate];
 }
+- (void)focusLocations:(NSArray*)locations {
+    [self.mapView showAnnotations:[locations map:^id (Location *location) {
+        return location.annotation;
+    }] animated:YES];
+}
 - (void)selectLocation:(Location *)location {
     [self focusLocation:location];
     [self.mapView selectAnnotation:location.annotation animated:YES];

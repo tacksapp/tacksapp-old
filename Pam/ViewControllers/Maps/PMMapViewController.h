@@ -11,6 +11,7 @@
 @protocol MapDisplayProtocol
 -(void)focusLocation:(Location*)location;
 -(void) selectLocation:(Location*)location;
+- (void)focusLocations:(NSArray*)locations;
 @end
 
 @interface PMMapViewController : UIViewController <MapDisplayProtocol>
