@@ -20,8 +20,7 @@
 @property(nonatomic, strong) UIButton *revealMenuButton;
 @property(nonatomic, strong) id<MKAnnotation> selectedAnnotation;
 
-@property(nonatomic, weak) MKUserLocation *userLocation; // todo: strong?
-
+@property(nonatomic, strong) MKUserLocation *userLocation; // todo: weak?
 - (void)focusCoordinate:(CLLocationCoordinate2D)coordinate2D;
 
 - (void)didTouchRevealMenu:(id)sender;

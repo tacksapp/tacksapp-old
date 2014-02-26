@@ -15,6 +15,10 @@
     return NSStringWithFormat(@"%@:%f,%f", self.title, self.coordinate.latitude, self.coordinate.longitude);
 }
 
+-(CLLocation*)clLocation{
+    return [[CLLocation alloc] initWithLatitude:self.latitude longitude:self.longitude];
+}
+
 - (CLLocationCoordinate2D)coordinate {
     CLLocationCoordinate2D coord;
     coord.latitude = self.latitude;

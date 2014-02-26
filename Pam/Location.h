@@ -18,5 +18,7 @@
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 
+- (CLLocation *)clLocation;
+
 - (PMAnnotation*)annotation;
 @end

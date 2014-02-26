@@ -65,6 +65,10 @@ static NSString* cellIdentifier = @"PMLocationsMenuViewControllerCell";
         Location *location= [self.locations objectAtIndex:(NSUInteger) indexPath.row];
         [cell.textLabel setText:location.title];
 
+        if (self.delegate.userLocation){
+            CLLocationDistance distance = [location.clLocation distanceFromLocation:self.delegate.userLocation.location];
+            [cell.detailTextLabel setText: NSStringWithFormat(@"%.0f km", distance/1000)];
+        }
     }
 }
 
