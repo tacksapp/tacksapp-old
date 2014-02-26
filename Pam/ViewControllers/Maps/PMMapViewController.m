@@ -93,6 +93,7 @@
         pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
         pinView.enabled = YES;
         pinView.canShowCallout = YES;
+        pinView.draggable= YES;
 
 //        UIButton *btn = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 //        //Accessoryview for the annotation view in ios.
@@ -104,6 +105,16 @@
 
     pinView.pinColor = MKPinAnnotationColorRed;  //or Green or Purple
     return pinView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView
+        didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
+{
+    if (newState == MKAnnotationViewDragStateEnding){
+        if ([annotationView.annotation isKindOfClass:PMAnnotation.class]){
+            [((PMAnnotation *)annotationView.annotation).location save];
+        }
+    }
 }
 
 #pragma mark Actions:
