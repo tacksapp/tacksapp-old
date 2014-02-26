@@ -33,11 +33,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     [self.menuViewController setDelegate:mainMapViewController];
 
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.menuViewController];
-    CGRect frame= self.navigationController.view.frame;
-    frame.size.width=270.0f;
-    [self.navigationController.view setFrame:frame];
-
-
 
     self.slidingViewController= [[JSSlidingViewController alloc] initWithFrontViewController:mainMapViewController backViewController:self.navigationController];
     self.slidingViewController.useBouncyAnimations=NO;

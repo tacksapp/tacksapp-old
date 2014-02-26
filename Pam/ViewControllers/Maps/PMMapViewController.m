@@ -143,7 +143,7 @@
 }
 
 #pragma mark Getters:
-- (OCMapView *)mapView {
+- (MKMapView *)mapView {
     if (!_mapView){
         _mapView= [[MKMapView alloc] initWithFrame:self.view.bounds]; // MBXMapView.alloc.initWithFrame(CGRectZero, mapID: "iandundas.map-2sgvzixp")
 //        _mapView= [[OCMapView alloc] initWithFrame:self.view.bounds]; // MBXMapView.alloc.initWithFrame(CGRectZero, mapID: "iandundas.map-2sgvzixp")

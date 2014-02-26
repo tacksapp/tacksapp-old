@@ -11,7 +11,7 @@
 @protocol MapDisplayProtocol
 -(void)focusLocation:(Location*)location;
 -(void) selectLocation:(Location*)location;
-- (void)focusLocations:(NSArray*)locations;
+-(void)focusLocations:(NSArray*)locations;
 -(MKUserLocation*)userLocation;
 @end
 
