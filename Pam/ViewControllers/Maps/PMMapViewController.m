@@ -82,28 +82,34 @@
 }
 - (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>)annotation{
 
+    static NSString *defaultPinID = @"identifier";
+
     if ([annotation isKindOfClass:MKUserLocation.class])
         return nil; // keep the blue dot.
 
-    static NSString *defaultPinID = @"identifier";
+    MKPinAnnotationView *pinAnnotationView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+    if (pinAnnotationView == nil){
+        pinAnnotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+        pinAnnotationView.enabled = YES;
+        pinAnnotationView.canShowCallout = YES;
+        pinAnnotationView.draggable= YES;
+        pinAnnotationView.animatesDrop= YES;
 
-    MKPinAnnotationView *pinView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
-    if (pinView == nil){
-        pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
-        pinView.enabled = YES;
-        pinView.canShowCallout = YES;
-        pinView.draggable= YES;
+//        if ([annotation isKindOfClass:PMTemporaryAnnotation.class]){
+//            UITapGestureRecognizer *tapGesture= [UITapGestureRecognizer.alloc initWithTarget:self action:@selector(didTouchOnCallout:)];
+//            [pinAnnotationView addGestureRecognizer: tapGesture];
+//        }
 
 //        UIButton *btn = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 //        //Accessoryview for the annotation view in ios.
-//        pinView.rightCalloutAccessoryView = btn;
+//        pinAnnotationView.rightCalloutAccessoryView = btn;
     }
     else{
-        pinView.annotation = annotation;
+        pinAnnotationView.annotation = annotation;
     }
 
-    pinView.pinColor = MKPinAnnotationColorRed;  //or Green or Purple
-    return pinView;
+    pinAnnotationView.pinColor = MKPinAnnotationColorRed;  //or Green or Purple
+    return pinAnnotationView;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView
@@ -130,13 +136,21 @@
         NSLog(@"User location not available");
     }
 }
+-(void) didLongTouchOnMap:(UIGestureRecognizer *)sender{
 
--(void) didLongTouchOnMap:(UITouch *)sender{
+    if (sender.state==UIGestureRecognizerStateBegan){
+        CLLocationCoordinate2D coordinate= [self.mapView convertPoint:[sender locationInView:self.mapView] toCoordinateFromView:self.mapView];
+        [self createNewEmptyLocationAtCoordinate:coordinate];
+    }
+}
+-(void) didTouchOnCalloutWithAnnotation:(id<MKAnnotation>)annotation{
 
-    CLLocationCoordinate2D location= [self.mapView convertPoint:[sender locationInView:self.mapView] toCoordinateFromView:self.mapView];
+}
 
+//todo move
+-(void)createNewEmptyLocationAtCoordinate:(CLLocationCoordinate2D)coordinate {
     PMTemporaryAnnotation *annotation= [[PMTemporaryAnnotation alloc]init];
-    annotation.coordinate= location;
+    annotation.coordinate= coordinate;
     annotation.title= @"New place";
 
     [self.mapView addAnnotation:annotation];
@@ -154,7 +168,7 @@
         // Add touch events:
         UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc]
                 initWithTarget:self action:@selector(didLongTouchOnMap:)];
-        longPressGestureRecognizer .minimumPressDuration= 1.0;
+        longPressGestureRecognizer .minimumPressDuration= 0.55;
         [_mapView addGestureRecognizer: longPressGestureRecognizer];
 
     }
