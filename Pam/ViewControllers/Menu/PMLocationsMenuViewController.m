@@ -10,6 +10,7 @@
 #import "PMMapViewController.h"
 #import "PMAppDelegate.h"
 #import "JSSlidingViewController.h"
+#import "PMLocationTableViewCell.h"
 
 static NSString* cellIdentifier = @"PMLocationsMenuViewControllerCell";
 
@@ -24,8 +25,8 @@ static NSString* cellIdentifier = @"PMLocationsMenuViewControllerCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTitle:@"Locations"];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    [self setTitle:self.place.title];
+    [self.tableView registerClass:[PMLocationTableViewCell class] forCellReuseIdentifier:cellIdentifier];
 
     [self refreshData];
 }
@@ -59,7 +60,7 @@ static NSString* cellIdentifier = @"PMLocationsMenuViewControllerCell";
 
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0){
-        [cell.textLabel setText:NSStringWithFormat (@"%@: show all", self.place.title)];
+        [cell.textLabel setText:@"Show all"];
     }
     else if (indexPath.section==1){
         Location *location= [self.locations objectAtIndex:(NSUInteger) indexPath.row];
