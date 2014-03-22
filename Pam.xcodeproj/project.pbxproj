@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19656057A89CFE90DBD17D44 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196560426722917856212ACD /* DetailViewController.m */; };
 		196561DCA8C4BBAC1E7D8E33 /* frontViewControllerDropShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196561E9813AB966EA5EF5B7 /* frontViewControllerDropShadow@2x.png */; };
+		1965631182FE6EBF0AF93252 /* UIView+blurring.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656172F5F5EB27709FBD8A /* UIView+blurring.m */; };
 		196565CD8B1148C8DD8D7572 /* PMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196567B1F1E58495654BEFF0 /* PMMapViewController.m */; };
 		19656621D16BDC5051CF41DF /* frontViewControllerDropShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 19656014DDA2A31A7118CA3D /* frontViewControllerDropShadow.png */; };
 		196569676BC142E84C5C8B45 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 196568BA511788FA5ACB0B7F /* CoreLocation.framework */; };
+		19656A4E6F85E2BB509634CD /* IDTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1965686C7A7B9FEB4FB1B8AB /* IDTransitionController.m */; };
 		19656A570F9E58CB78E0E901 /* PMLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1965638ED171CB45ACF992CA /* PMLocationTableViewCell.m */; };
+		19656B23A90E0123B4C985D0 /* IDTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 196561AAB80CAF8CE0A2898F /* IDTransitioningDelegate.m */; };
 		19656B3B4497BC1502ED4007 /* PMLocationsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656402BAFD233244331AA3 /* PMLocationsMenuViewController.m */; };
 		19656CAEEB7C71F95ABC5F2C /* PMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1965601A3F423603B697151B /* PMAnnotation.m */; };
 		19656D8FE9BFF39C2CBFB0B6 /* MKMapView+zooming.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656586EA4A50146A00C0D5 /* MKMapView+zooming.m */; };
@@ -57,22 +61,30 @@
 /* Begin PBXFileReference section */
 		19656014DDA2A31A7118CA3D /* frontViewControllerDropShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frontViewControllerDropShadow.png; sourceTree = "<group>"; };
 		1965601A3F423603B697151B /* PMAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMAnnotation.m; sourceTree = "<group>"; };
+		196560426722917856212ACD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		19656172F5F5EB27709FBD8A /* UIView+blurring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+blurring.m"; sourceTree = "<group>"; };
+		196561AAB80CAF8CE0A2898F /* IDTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTransitioningDelegate.m; sourceTree = "<group>"; };
 		196561B96C3CA723B7D7EEEA /* PMTemporaryAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTemporaryAnnotation.m; sourceTree = "<group>"; };
 		196561E9813AB966EA5EF5B7 /* frontViewControllerDropShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frontViewControllerDropShadow@2x.png"; sourceTree = "<group>"; };
 		196561F95517EA9160759C38 /* PMLocationsMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLocationsMenuViewController.h; sourceTree = "<group>"; };
 		1965621DD20BF9DBDDB97167 /* PMLocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLocationTableViewCell.h; sourceTree = "<group>"; };
 		19656234E97519E9B68DC7A4 /* PMAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMAnnotation.h; sourceTree = "<group>"; };
+		19656243088F51742A04C854 /* IDTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTransitionController.h; sourceTree = "<group>"; };
 		1965638ED171CB45ACF992CA /* PMLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMLocationTableViewCell.m; sourceTree = "<group>"; };
+		196563E71D1EED973A7F5434 /* UIView+blurring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+blurring.h"; sourceTree = "<group>"; };
 		19656402BAFD233244331AA3 /* PMLocationsMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMLocationsMenuViewController.m; sourceTree = "<group>"; };
 		19656586EA4A50146A00C0D5 /* MKMapView+zooming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+zooming.m"; sourceTree = "<group>"; };
+		196565EAEE3CB6C2C7D26643 /* IDTransitioningDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTransitioningDelegate.h; sourceTree = "<group>"; };
 		1965674AB0F42EF948E2540A /* JSSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSlidingViewController.h; sourceTree = "<group>"; };
 		1965675F9D2CC599CE3783EE /* PMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMapViewController.h; sourceTree = "<group>"; };
 		196567B1F1E58495654BEFF0 /* PMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMapViewController.m; sourceTree = "<group>"; };
 		196567F1A3B76305B385D319 /* PMTemporaryAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTemporaryAnnotation.h; sourceTree = "<group>"; };
+		1965686C7A7B9FEB4FB1B8AB /* IDTransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTransitionController.m; sourceTree = "<group>"; };
 		196568BA511788FA5ACB0B7F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		196568EFE21E6EAE78AD6208 /* PMPlacesMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPlacesMenuViewController.h; sourceTree = "<group>"; };
 		196569D6563218CC4B4320A7 /* MKMapView+zooming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+zooming.h"; sourceTree = "<group>"; };
 		19656D034A86855BD96381EA /* JSSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSlidingViewController.m; sourceTree = "<group>"; };
+		19656EF13DA81AE0D3CD16AB /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		19656FB553E8F95280F5FC7A /* PMPlacesMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPlacesMenuViewController.m; sourceTree = "<group>"; };
 		3C7C681318941C600063C134 /* Pam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C7C681618941C600063C134 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -138,6 +150,12 @@
 			children = (
 				196567B1F1E58495654BEFF0 /* PMMapViewController.m */,
 				1965675F9D2CC599CE3783EE /* PMMapViewController.h */,
+				196561AAB80CAF8CE0A2898F /* IDTransitioningDelegate.m */,
+				196565EAEE3CB6C2C7D26643 /* IDTransitioningDelegate.h */,
+				196560426722917856212ACD /* DetailViewController.m */,
+				19656EF13DA81AE0D3CD16AB /* DetailViewController.h */,
+				1965686C7A7B9FEB4FB1B8AB /* IDTransitionController.m */,
+				19656243088F51742A04C854 /* IDTransitionController.h */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -207,6 +225,8 @@
 			children = (
 				19656586EA4A50146A00C0D5 /* MKMapView+zooming.m */,
 				196569D6563218CC4B4320A7 /* MKMapView+zooming.h */,
+				19656172F5F5EB27709FBD8A /* UIView+blurring.m */,
+				196563E71D1EED973A7F5434 /* UIView+blurring.h */,
 			);
 			name = Categories;
 			path = categories;
@@ -531,6 +551,10 @@
 				19656B3B4497BC1502ED4007 /* PMLocationsMenuViewController.m in Sources */,
 				19656CAEEB7C71F95ABC5F2C /* PMAnnotation.m in Sources */,
 				19656A570F9E58CB78E0E901 /* PMLocationTableViewCell.m in Sources */,
+				19656B23A90E0123B4C985D0 /* IDTransitioningDelegate.m in Sources */,
+				19656057A89CFE90DBD17D44 /* DetailViewController.m in Sources */,
+				19656A4E6F85E2BB509634CD /* IDTransitionController.m in Sources */,
+				1965631182FE6EBF0AF93252 /* UIView+blurring.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

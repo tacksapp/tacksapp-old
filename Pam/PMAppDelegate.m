@@ -80,6 +80,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
     NSLog(@"Creating some dev entities.. ");
 
+
     Place *place=[Place create:@{
          @"title" : @"Amsterdam",
          @"isDefault": @YES,

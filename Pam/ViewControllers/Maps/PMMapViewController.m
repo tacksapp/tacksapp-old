@@ -13,6 +13,8 @@
 #import "PMTemporaryAnnotation.h"
 #import "JSSlidingViewController.h"
 #import "PMAnnotation.h"
+#import "IDTransitioningDelegate.h"
+#import "DetailViewController.h"
 
 @interface PMMapViewController ()  <MKMapViewDelegate>
 
@@ -21,6 +23,10 @@
 @property(nonatomic, strong) id<MKAnnotation> selectedAnnotation;
 
 @property(nonatomic, strong) MKUserLocation *userLocation; // todo: weak?
+- (void)didSelectAnnotationCallout:(id)sender;
+
+- (void)showEditLocationViewController:(Location *)location fromCoordinate:(CLLocationCoordinate2D)coordinate2D;
+
 - (void)focusCoordinate:(CLLocationCoordinate2D)coordinate2D;
 
 - (void)didTouchRevealMenu:(id)sender;
@@ -42,6 +48,7 @@
     NSArray *locations = [Location all];
     [self plotLocations:locations];
 
+
 }
 
 - (void)plotLocations:(NSArray *)locations {
@@ -49,6 +56,37 @@
         [self.mapView addAnnotation:location.annotation];
     }];
 }
+
+#pragma mark Transitions
+-(void) showEditLocationViewController:(Location *)location fromCoordinate:(CLLocationCoordinate2D)coordinate2D{
+
+    IDTransitioningDelegate *transitioningDelegate= [[IDTransitioningDelegate alloc]init];
+
+    UIButton *closeModalButton= [[UIButton alloc] initWithFrame:self.view.bounds];
+    [closeModalButton addTarget:self action:@selector(hideEditLocationViewController:) forControlEvents:UIControlEventTouchUpInside];
+    [closeModalButton setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:closeModalButton];
+
+    DetailViewController *detailViewController= [[DetailViewController alloc] initWithLocation:location];
+    detailViewController.transitioningDelegate= transitioningDelegate;
+    detailViewController.modalPresentationStyle= UIModalPresentationCustom;
+    detailViewController.modalInPopover= NO;
+    detailViewController.sourceCoordinate= coordinate2D;
+
+    [self presentViewController:detailViewController animated:YES completion:^{
+
+    }];
+}
+
+- (void)hideEditLocationViewController:(id)sender {
+    if ([sender isKindOfClass:UIButton.class])
+        [sender removeFromSuperview];
+
+    [self dismissViewControllerAnimated:YES completion:^{
+        // Removed edit modal from view
+    }];
+}
+
 
 #pragma mark MapView tricks
 -(void)focusCoordinate:(CLLocationCoordinate2D)coordinate2D{
@@ -74,12 +112,6 @@
 }
 
 #pragma mark MKMapView Delegates:
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
-    [self setSelectedAnnotation:view.annotation];
-}
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-    self.userLocation= userLocation;
-}
 - (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>)annotation{
 
     static NSString *defaultPinID = @"identifier";
@@ -95,14 +127,17 @@
         pinAnnotationView.draggable= YES;
         pinAnnotationView.animatesDrop= YES;
 
+        pinAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+
+        // TODO: can use prepareForReuse on MKAnnotationView to remove GestureRecognisers.
+//        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSelectAnnotationCallout:)];
+//        [pinAnnotationView addGestureRecognizer:tapGestureRecognizer];
+
 //        if ([annotation isKindOfClass:PMTemporaryAnnotation.class]){
 //            UITapGestureRecognizer *tapGesture= [UITapGestureRecognizer.alloc initWithTarget:self action:@selector(didTouchOnCallout:)];
 //            [pinAnnotationView addGestureRecognizer: tapGesture];
 //        }
 
-//        UIButton *btn = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//        //Accessoryview for the annotation view in ios.
-//        pinAnnotationView.rightCalloutAccessoryView = btn;
     }
     else{
         pinAnnotationView.annotation = annotation;
@@ -113,13 +148,26 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView
-        didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
+        didChangeDragState:(MKAnnotationViewDragState)newState
+        fromOldState:(MKAnnotationViewDragState)oldState
 {
     if (newState == MKAnnotationViewDragStateEnding){
         if ([annotationView.annotation isKindOfClass:PMAnnotation.class]){
             [((PMAnnotation *)annotationView.annotation).location save];
         }
     }
+}
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    self.userLocation= userLocation;
+}
+// Did select the *annotation* i.e. the point on the map
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
+    [self setSelectedAnnotation:view.annotation];
+}
+// Did select the popout bubble
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    [self showEditLocationViewController:nil fromCoordinate:view.annotation.coordinate];
 }
 
 #pragma mark Actions:
