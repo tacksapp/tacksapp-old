@@ -25,7 +25,7 @@
 @property(nonatomic, strong) MKUserLocation *userLocation; // todo: weak?
 - (void)didSelectAnnotationCallout:(id)sender;
 
-- (void)showEditLocationViewController:(Location *)location fromCoordinate:(CLLocationCoordinate2D)coordinate2D;
+- (void)showEditLocationViewController:(Location *)location fromPoint:(CGPoint)animateFromPoint;
 
 - (void)focusCoordinate:(CLLocationCoordinate2D)coordinate2D;
 
@@ -58,7 +58,7 @@
 }
 
 #pragma mark Transitions
--(void) showEditLocationViewController:(Location *)location fromCoordinate:(CLLocationCoordinate2D)coordinate2D{
+-(void)showEditLocationViewController:(Location *)location fromPoint:(CGPoint)animateFromPoint{
 
     IDTransitioningDelegate *transitioningDelegate= [[IDTransitioningDelegate alloc]init];
 
@@ -71,7 +71,9 @@
     detailViewController.transitioningDelegate= transitioningDelegate;
     detailViewController.modalPresentationStyle= UIModalPresentationCustom;
     detailViewController.modalInPopover= NO;
-    detailViewController.sourceCoordinate= coordinate2D;
+    detailViewController.animateFromPoint= animateFromPoint;
+
+    NSLog (@"animate from point: %@", NSStringFromCGPoint (animateFromPoint));
 
     [self presentViewController:detailViewController animated:YES completion:^{
 
@@ -167,7 +169,16 @@
 }
 // Did select the popout bubble
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    [self showEditLocationViewController:nil fromCoordinate:view.annotation.coordinate];
+
+    if ([view.annotation isKindOfClass:PMAnnotation.class]){
+        Location *location= ((PMAnnotation*)view.annotation).location;
+
+        CGPoint windowPoint = [control convertPoint:control.bounds.origin toView:nil];
+        [self showEditLocationViewController:location fromPoint:windowPoint];
+    }
+    else{
+        NSLog(@"Can't edit location for Annotation of type %@", NSStringFromClass (PMTemporaryAnnotation.class));
+    }
 }
 
 #pragma mark Actions:
@@ -190,9 +201,6 @@
         CLLocationCoordinate2D coordinate= [self.mapView convertPoint:[sender locationInView:self.mapView] toCoordinateFromView:self.mapView];
         [self createNewEmptyLocationAtCoordinate:coordinate];
     }
-}
--(void) didTouchOnCalloutWithAnnotation:(id<MKAnnotation>)annotation{
-
 }
 
 //todo move

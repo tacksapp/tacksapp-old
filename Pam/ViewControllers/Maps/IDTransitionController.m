@@ -49,7 +49,7 @@
         [fromView blurWithAnimationDuration:[self transitionDuration:transitionContext]*0.7];
 
         // TODO remove reliance on DetailViewController (and use inView.centre if not exist)
-        sourcePoint= ((DetailViewController *)toViewController).sourcePoint;
+        sourcePoint= ((DetailViewController *)toViewController).animateFromPoint;
         finalRect= CGRectMake (20, 70, 280, 160) ; // TODO use CGRectInset etc to make this fit different screens (fromView.frame, 20, 70)
 
         CGRect initialRect= CGRectMake (sourcePoint.x, sourcePoint.y, 10, 10);
