@@ -24,7 +24,6 @@ static NSString* cellIdentifier = @"PMRootMenuViewControllerCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle:@"Places"];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
 
     self.navigationItem.leftBarButtonItem= [[UIBarButtonItem alloc]
             initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(startAddPlace)];
@@ -94,7 +93,11 @@ static NSString* cellIdentifier = @"PMRootMenuViewControllerCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    PMPlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+
+    if(!cell){
+        cell= [[PMPlaceTableViewCell alloc] initWithReuseIdentifier:cellIdentifier];
+    }
 
     [self configureCell:cell forRowAtIndexPath:indexPath];
     return cell;

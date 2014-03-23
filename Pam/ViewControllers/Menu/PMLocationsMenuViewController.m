@@ -29,7 +29,6 @@ static NSString* cellIdentifier = @"PMLocationsMenuViewControllerCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle:self.place.title];
-    [self.tableView registerClass:[PMLocationTableViewCell class] forCellReuseIdentifier:cellIdentifier];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refreshData)
@@ -59,7 +58,10 @@ static NSString* cellIdentifier = @"PMLocationsMenuViewControllerCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    PMLocationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell){
+        cell= [[PMLocationTableViewCell alloc] initWithReuseIdentifier:cellIdentifier];
+    }
 
     [self configureCell:cell forRowAtIndexPath:indexPath];
     return cell;
