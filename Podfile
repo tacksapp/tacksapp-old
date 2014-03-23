@@ -10,3 +10,5 @@ pod 'ObjectiveSugar'
 
 pod 'UIImageEffects', '~> 0.0'
 #link_with 'PamTests'
+
+pod 'SparkInspector'

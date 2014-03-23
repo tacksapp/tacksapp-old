@@ -21,6 +21,7 @@ PODS:
     - ObjectiveSugar
   - ObjectiveSugar (1.1.0)
   - OCMapView (0.1.0)
+  - SparkInspector (1.2.2)
   - UIImageEffects (0.0.1)
 
 DEPENDENCIES:
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - ObjectiveRecord (from `https://github.com/supermarin/ObjectiveRecord.git`)
   - ObjectiveSugar
   - OCMapView (~> 0.1.0)
+  - SparkInspector
   - UIImageEffects (~> 0.0)
 
 EXTERNAL SOURCES:
@@ -39,6 +41,7 @@ SPEC CHECKSUMS:
   ObjectiveRecord: 109a6c583284c2c9af1dc0d6ccc1dfc84e826c45
   ObjectiveSugar: fed588577bcf9733546aeaa089de444e4bab9a52
   OCMapView: 791bb2afa36034eb6b772d0ddbeb6685bc726e26
+  SparkInspector: 4bd040e553e958cabeb898301d2947f2be93144b
   UIImageEffects: e1059bcd4c1766f72a78ae6ade359e3f9ee31063
 
 COCOAPODS: 0.29.0
