@@ -1,5 +1,6 @@
 #import "Place.h"
 
+NSString *const TKPlaceDidSaveNotification=@"TKPlaceDidSaveNotification";
 
 @interface Place ()
 
@@ -21,6 +22,9 @@
     if (self.updatedAt==nil || [self.updatedAt compare:[NSDate dateWithTimeIntervalSinceNow: -5]]==NSOrderedAscending){
         self.updatedAt= [NSDate date];
     }
+}
+-(void)didSave {
+    [[NSNotificationCenter defaultCenter] postNotificationName:TKPlaceDidSaveNotification object:self];
 }
 
 @end

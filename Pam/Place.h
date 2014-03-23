@@ -1,4 +1,6 @@
 
+FOUNDATION_EXPORT NSString *const TKPlaceDidSaveNotification;
+
 @interface Place : NSManagedObject
 
 @property (nonatomic, strong) NSString *title;

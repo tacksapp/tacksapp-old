@@ -3,6 +3,8 @@
 #import "NSString+ObjectiveSugar.h"
 #import "PMAnnotation.h"
 
+NSString *const TKLocationDidSaveNotification=@"TKLocationDidSaveNotification";
+
 @interface Location ()
 + (NSMutableDictionary *)sharedAnnotations;
 @end
@@ -44,6 +46,9 @@
     if (self.updatedAt==nil || [self.updatedAt compare:[NSDate dateWithTimeIntervalSinceNow: -5]]==NSOrderedAscending){
         self.updatedAt= [NSDate date];
     }
+}
+-(void)didSave {
+    [[NSNotificationCenter defaultCenter] postNotificationName:TKLocationDidSaveNotification object:self];
 }
 
 - (PMAnnotation*)annotation{
