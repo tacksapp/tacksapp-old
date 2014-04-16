@@ -131,7 +131,6 @@ static NSString* cellIdentifier = @"PMRootMenuViewControllerCell";
     Place *place= [self.places objectAtIndex:(NSUInteger) indexPath.row];
 
     [cell.textLabel setText:NSStringWithFormat (@"%@ %@", place.title, [place isDefault]?@"(default)":@"")];
-
     [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
 }
 

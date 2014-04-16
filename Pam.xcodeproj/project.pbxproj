@@ -10,6 +10,7 @@
 		19656057A89CFE90DBD17D44 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196560426722917856212ACD /* DetailViewController.m */; };
 		196561DCA8C4BBAC1E7D8E33 /* frontViewControllerDropShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196561E9813AB966EA5EF5B7 /* frontViewControllerDropShadow@2x.png */; };
 		1965631182FE6EBF0AF93252 /* UIView+blurring.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656172F5F5EB27709FBD8A /* UIView+blurring.m */; };
+		1965646D3062ED4CD1DEDED1 /* NSMutableArray+extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656D6E22EDE3DF49FAC29F /* NSMutableArray+extensions.m */; };
 		19656584F2F3195F07917AB8 /* PMPlaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 196563DE67E4D526C0CB1A41 /* PMPlaceTableViewCell.m */; };
 		196565CD8B1148C8DD8D7572 /* PMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196567B1F1E58495654BEFF0 /* PMMapViewController.m */; };
 		19656621D16BDC5051CF41DF /* frontViewControllerDropShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 19656014DDA2A31A7118CA3D /* frontViewControllerDropShadow.png */; };
@@ -92,7 +93,9 @@
 		196569D6563218CC4B4320A7 /* MKMapView+zooming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+zooming.h"; sourceTree = "<group>"; };
 		19656BF49199BD89ABB834E7 /* PMPlaceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPlaceTableViewCell.h; sourceTree = "<group>"; };
 		19656D034A86855BD96381EA /* JSSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSlidingViewController.m; sourceTree = "<group>"; };
+		19656D6E22EDE3DF49FAC29F /* NSMutableArray+extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+extensions.m"; sourceTree = "<group>"; };
 		19656EF13DA81AE0D3CD16AB /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		19656F3B3874E3E111974721 /* NSMutableArray+extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+extensions.h"; sourceTree = "<group>"; };
 		19656FB553E8F95280F5FC7A /* PMPlacesMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPlacesMenuViewController.m; sourceTree = "<group>"; };
 		19656FDD5E330AC9668BB6D6 /* UIView+AutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoLayout.m"; sourceTree = "<group>"; };
 		3C7C681318941C600063C134 /* Pam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,6 +253,8 @@
 				196563E71D1EED973A7F5434 /* UIView+blurring.h */,
 				19656FDD5E330AC9668BB6D6 /* UIView+AutoLayout.m */,
 				1965667466722AF072CC82A5 /* UIView+AutoLayout.h */,
+				19656D6E22EDE3DF49FAC29F /* NSMutableArray+extensions.m */,
+				19656F3B3874E3E111974721 /* NSMutableArray+extensions.h */,
 			);
 			name = Categories;
 			path = categories;
@@ -581,6 +586,7 @@
 				19656D947C67C56EAE0DC953 /* PMLocationTableViewCell.m in Sources */,
 				19656584F2F3195F07917AB8 /* PMPlaceTableViewCell.m in Sources */,
 				19656E22F65CABC6B0AA15AE /* PMMenuTableViewCell.m in Sources */,
+				1965646D3062ED4CD1DEDED1 /* NSMutableArray+extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

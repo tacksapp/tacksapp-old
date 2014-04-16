@@ -15,6 +15,8 @@
 #import "PMAnnotation.h"
 #import "IDTransitioningDelegate.h"
 #import "DetailViewController.h"
+#import "NSMutableArray+ObjectiveSugar.h"
+#import "NSMutableArray+extensions.h"
 
 @interface PMMapViewController ()  <MKMapViewDelegate>
 
@@ -23,6 +25,8 @@
 @property(nonatomic, strong) id<MKAnnotation> selectedAnnotation;
 
 @property(nonatomic, strong) MKUserLocation *userLocation; // todo: weak?
+@property(nonatomic, strong) NSMutableArray *disabledAnnotationAnimations;
+
 - (void)didSelectAnnotationCallout:(id)sender;
 
 - (void)showEditLocationViewController:(Location *)location fromPoint:(CGPoint)animateFromPoint;
@@ -45,9 +49,12 @@
     [self.view addSubview:[self revealMenuButton]];
     [self.view addSubview:[self centreMapButton]];
 
+    self.disabledAnnotationAnimations = [NSMutableArray new];
     NSArray *locations = [Location all];
     [self plotLocations:locations];
 
+    //    TODO : add observer to catch updated Location ,and remove/re-add annotation
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveLocationDidSaveNotification:) name:TKLocationDidSaveNotification object:nil];
 
 }
 
@@ -55,6 +62,23 @@
     [locations each:^(Location *location) {
         [self.mapView addAnnotation:location.annotation];
     }];
+}
+
+- (void) receiveLocationDidSaveNotification:(NSNotification*)notification{
+    Location *location= notification.object;
+    [self.mapView removeAnnotation:location.annotation];
+
+    [self.disabledAnnotationAnimations addObject:location.annotation];
+    [self.mapView addAnnotation: location.annotation];
+
+//    [self.mapView performSelector:@selector(selectAnnotation:) withObject:location.annotation afterDelay:0.5];
+    [self performSelector:@selector(selectLocation:) withObject:location afterDelay:0.2];
+//    [self.mapView.selectedAnnotations arrayByAddingObject:location.annotation];
+//    [self setSelectedAnnotation:location.annotation];
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    NSLog(@"Changed Region");
 }
 
 #pragma mark Transitions
@@ -127,10 +151,7 @@
         pinAnnotationView.enabled = YES;
         pinAnnotationView.canShowCallout = YES;
         pinAnnotationView.draggable= YES;
-        pinAnnotationView.animatesDrop= YES;
-
         pinAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-
         // TODO: can use prepareForReuse on MKAnnotationView to remove GestureRecognisers.
 //        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSelectAnnotationCallout:)];
 //        [pinAnnotationView addGestureRecognizer:tapGestureRecognizer];
@@ -144,8 +165,9 @@
     else{
         pinAnnotationView.annotation = annotation;
     }
-
+    pinAnnotationView.animatesDrop= ![self.disabledAnnotationAnimations removeObjectAndConfirmChange:annotation];
     pinAnnotationView.pinColor = MKPinAnnotationColorRed;  //or Green or Purple
+
     return pinAnnotationView;
 }
 
@@ -207,7 +229,7 @@
 -(void)createNewEmptyLocationAtCoordinate:(CLLocationCoordinate2D)coordinate {
     PMTemporaryAnnotation *annotation= [[PMTemporaryAnnotation alloc]init];
     annotation.coordinate= coordinate;
-    annotation.title= @"New place";
+//    annotation.title= @"New place";
 
     [self.mapView addAnnotation:annotation];
 }

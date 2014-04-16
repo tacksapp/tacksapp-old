@@ -9,6 +9,8 @@ FOUNDATION_EXPORT NSString *const TKLocationDidSaveNotification;
 
 }
 
+@property (nonatomic, strong) NSString *primitiveTitle;
+
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
 @property (nonatomic, strong) NSString *title;
