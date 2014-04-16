@@ -4,7 +4,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PMMenuTableViewCell.h"
 
 
-@interface PMLocationTableViewCell : UITableViewCell
+@interface PMLocationTableViewCell : PMMenuTableViewCell
 @end

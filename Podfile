@@ -8,4 +8,7 @@ pod 'OCMapView', '~> 0.1.0'
 pod 'ObjectiveRecord', :git => 'https://github.com/supermarin/ObjectiveRecord.git'
 pod 'ObjectiveSugar'
 
+pod 'UIImageEffects'
 #link_with 'PamTests'
+
+pod 'SparkInspector'

@@ -3,6 +3,8 @@
 #import "NSString+ObjectiveSugar.h"
 #import "PMAnnotation.h"
 
+NSString *const TKLocationDidSaveNotification=@"TKLocationDidSaveNotification";
+
 @interface Location ()
 + (NSMutableDictionary *)sharedAnnotations;
 @end
@@ -10,6 +12,7 @@
 
 @implementation Location
 @dynamic latitude, longitude, title, subtitle, place, createdAt, updatedAt;
+@dynamic primitiveTitle;
 
 - (NSString *)description {
     return NSStringWithFormat(@"%@:%f,%f", self.title, self.coordinate.latitude, self.coordinate.longitude);
@@ -30,6 +33,15 @@
     self.longitude= newCoordinate.longitude;
 }
 
+- (NSString *)title {
+
+
+    NSString *title= self.primitiveTitle;
+    if (!title || title.length==0){
+        return @"New Location";
+    }
+    return title;
+}
 
 #pragma mark NSManagedObject boilerplate:
 - (void)awakeFromInsert{
@@ -44,6 +56,9 @@
     if (self.updatedAt==nil || [self.updatedAt compare:[NSDate dateWithTimeIntervalSinceNow: -5]]==NSOrderedAscending){
         self.updatedAt= [NSDate date];
     }
+}
+-(void)didSave {
+    [[NSNotificationCenter defaultCenter] postNotificationName:TKLocationDidSaveNotification object:self];
 }
 
 - (PMAnnotation*)annotation{

@@ -13,6 +13,10 @@
 #import "PMTemporaryAnnotation.h"
 #import "JSSlidingViewController.h"
 #import "PMAnnotation.h"
+#import "IDTransitioningDelegate.h"
+#import "DetailViewController.h"
+#import "NSMutableArray+ObjectiveSugar.h"
+#import "NSMutableArray+extensions.h"
 
 @interface PMMapViewController ()  <MKMapViewDelegate>
 
@@ -21,6 +25,12 @@
 @property(nonatomic, strong) id<MKAnnotation> selectedAnnotation;
 
 @property(nonatomic, strong) MKUserLocation *userLocation; // todo: weak?
+@property(nonatomic, strong) NSMutableArray *disabledAnnotationAnimations;
+
+- (void)didSelectAnnotationCallout:(id)sender;
+
+- (void)showEditLocationViewController:(Location *)location fromPoint:(CGPoint)animateFromPoint;
+
 - (void)focusCoordinate:(CLLocationCoordinate2D)coordinate2D;
 
 - (void)didTouchRevealMenu:(id)sender;
@@ -39,8 +49,12 @@
     [self.view addSubview:[self revealMenuButton]];
     [self.view addSubview:[self centreMapButton]];
 
+    self.disabledAnnotationAnimations = [NSMutableArray new];
     NSArray *locations = [Location all];
     [self plotLocations:locations];
+
+    //    TODO : add observer to catch updated Location ,and remove/re-add annotation
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveLocationDidSaveNotification:) name:TKLocationDidSaveNotification object:nil];
 
 }
 
@@ -49,6 +63,56 @@
         [self.mapView addAnnotation:location.annotation];
     }];
 }
+
+- (void) receiveLocationDidSaveNotification:(NSNotification*)notification{
+    Location *location= notification.object;
+    [self.mapView removeAnnotation:location.annotation];
+
+    [self.disabledAnnotationAnimations addObject:location.annotation];
+    [self.mapView addAnnotation: location.annotation];
+
+//    [self.mapView performSelector:@selector(selectAnnotation:) withObject:location.annotation afterDelay:0.5];
+    [self performSelector:@selector(selectLocation:) withObject:location afterDelay:0.2];
+//    [self.mapView.selectedAnnotations arrayByAddingObject:location.annotation];
+//    [self setSelectedAnnotation:location.annotation];
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    NSLog(@"Changed Region");
+}
+
+#pragma mark Transitions
+-(void)showEditLocationViewController:(Location *)location fromPoint:(CGPoint)animateFromPoint{
+
+    IDTransitioningDelegate *transitioningDelegate= [[IDTransitioningDelegate alloc]init];
+
+    UIButton *closeModalButton= [[UIButton alloc] initWithFrame:self.view.bounds];
+    [closeModalButton addTarget:self action:@selector(hideEditLocationViewController:) forControlEvents:UIControlEventTouchUpInside];
+    [closeModalButton setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview:closeModalButton];
+
+    DetailViewController *detailViewController= [[DetailViewController alloc] initWithLocation:location];
+    detailViewController.transitioningDelegate= transitioningDelegate;
+    detailViewController.modalPresentationStyle= UIModalPresentationCustom;
+    detailViewController.modalInPopover= NO;
+    detailViewController.animateFromPoint= animateFromPoint;
+
+    NSLog (@"animate from point: %@", NSStringFromCGPoint (animateFromPoint));
+
+    [self presentViewController:detailViewController animated:YES completion:^{
+
+    }];
+}
+
+- (void)hideEditLocationViewController:(id)sender {
+    if ([sender isKindOfClass:UIButton.class])
+        [sender removeFromSuperview];
+
+    [self dismissViewControllerAnimated:YES completion:^{
+        // Removed edit modal from view
+    }];
+}
+
 
 #pragma mark MapView tricks
 -(void)focusCoordinate:(CLLocationCoordinate2D)coordinate2D{
@@ -74,45 +138,68 @@
 }
 
 #pragma mark MKMapView Delegates:
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
-    [self setSelectedAnnotation:view.annotation];
-}
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-    self.userLocation= userLocation;
-}
 - (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>)annotation{
+
+    static NSString *defaultPinID = @"identifier";
 
     if ([annotation isKindOfClass:MKUserLocation.class])
         return nil; // keep the blue dot.
 
-    static NSString *defaultPinID = @"identifier";
+    MKPinAnnotationView *pinAnnotationView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+    if (pinAnnotationView == nil){
+        pinAnnotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+        pinAnnotationView.enabled = YES;
+        pinAnnotationView.canShowCallout = YES;
+        pinAnnotationView.draggable= YES;
+        pinAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        // TODO: can use prepareForReuse on MKAnnotationView to remove GestureRecognisers.
+//        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSelectAnnotationCallout:)];
+//        [pinAnnotationView addGestureRecognizer:tapGestureRecognizer];
 
-    MKPinAnnotationView *pinView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
-    if (pinView == nil){
-        pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
-        pinView.enabled = YES;
-        pinView.canShowCallout = YES;
-        pinView.draggable= YES;
+//        if ([annotation isKindOfClass:PMTemporaryAnnotation.class]){
+//            UITapGestureRecognizer *tapGesture= [UITapGestureRecognizer.alloc initWithTarget:self action:@selector(didTouchOnCallout:)];
+//            [pinAnnotationView addGestureRecognizer: tapGesture];
+//        }
 
-//        UIButton *btn = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//        //Accessoryview for the annotation view in ios.
-//        pinView.rightCalloutAccessoryView = btn;
     }
     else{
-        pinView.annotation = annotation;
+        pinAnnotationView.annotation = annotation;
     }
+    pinAnnotationView.animatesDrop= ![self.disabledAnnotationAnimations removeObjectAndConfirmChange:annotation];
+    pinAnnotationView.pinColor = MKPinAnnotationColorRed;  //or Green or Purple
 
-    pinView.pinColor = MKPinAnnotationColorRed;  //or Green or Purple
-    return pinView;
+    return pinAnnotationView;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView
-        didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
+        didChangeDragState:(MKAnnotationViewDragState)newState
+        fromOldState:(MKAnnotationViewDragState)oldState
 {
     if (newState == MKAnnotationViewDragStateEnding){
         if ([annotationView.annotation isKindOfClass:PMAnnotation.class]){
             [((PMAnnotation *)annotationView.annotation).location save];
         }
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    self.userLocation= userLocation;
+}
+// Did select the *annotation* i.e. the point on the map
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
+    [self setSelectedAnnotation:view.annotation];
+}
+// Did select the popout bubble
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+
+    if ([view.annotation isKindOfClass:PMAnnotation.class]){
+        Location *location= ((PMAnnotation*)view.annotation).location;
+
+        CGPoint windowPoint = [control convertPoint:control.bounds.origin toView:nil];
+        [self showEditLocationViewController:location fromPoint:windowPoint];
+    }
+    else{
+        NSLog(@"Can't edit location for Annotation of type %@", NSStringFromClass (PMTemporaryAnnotation.class));
     }
 }
 
@@ -130,14 +217,19 @@
         NSLog(@"User location not available");
     }
 }
+-(void) didLongTouchOnMap:(UIGestureRecognizer *)sender{
 
--(void) didLongTouchOnMap:(UITouch *)sender{
+    if (sender.state==UIGestureRecognizerStateBegan){
+        CLLocationCoordinate2D coordinate= [self.mapView convertPoint:[sender locationInView:self.mapView] toCoordinateFromView:self.mapView];
+        [self createNewEmptyLocationAtCoordinate:coordinate];
+    }
+}
 
-    CLLocationCoordinate2D location= [self.mapView convertPoint:[sender locationInView:self.mapView] toCoordinateFromView:self.mapView];
-
+//todo move
+-(void)createNewEmptyLocationAtCoordinate:(CLLocationCoordinate2D)coordinate {
     PMTemporaryAnnotation *annotation= [[PMTemporaryAnnotation alloc]init];
-    annotation.coordinate= location;
-    annotation.title= @"New place";
+    annotation.coordinate= coordinate;
+//    annotation.title= @"New place";
 
     [self.mapView addAnnotation:annotation];
 }
@@ -154,7 +246,7 @@
         // Add touch events:
         UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc]
                 initWithTarget:self action:@selector(didLongTouchOnMap:)];
-        longPressGestureRecognizer .minimumPressDuration= 1.0;
+        longPressGestureRecognizer .minimumPressDuration= 0.55;
         [_mapView addGestureRecognizer: longPressGestureRecognizer];
 
     }

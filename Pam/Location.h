@@ -3,9 +3,13 @@
 @class Place;
 @class PMAnnotation;
 
+FOUNDATION_EXPORT NSString *const TKLocationDidSaveNotification;
+
 @interface Location : NSManagedObject{
 
 }
+
+@property (nonatomic, strong) NSString *primitiveTitle;
 
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;

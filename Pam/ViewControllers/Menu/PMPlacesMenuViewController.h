@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol MapDisplayProtocol;
+@class Place;
 
 
 @interface PMPlacesMenuViewController : UITableViewController

@@ -23,15 +23,21 @@ static NSString* cellIdentifier = @"PMLocationsMenuViewControllerCell";
 
 }
 
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TKLocationDidSaveNotification object:nil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle:self.place.title];
-    [self.tableView registerClass:[PMLocationTableViewCell class] forCellReuseIdentifier:cellIdentifier];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshData)
+                                                 name:TKLocationDidSaveNotification
+                                               object:nil];
     [self refreshData];
 }
 
-- (void)refreshData {
+- (void)refreshData { // TODO: implement using a FRController instead
     self.locations = [Location where:@{@"place" : self.place} order:@{@"title" : @"ASC"}];
     [self.tableView reloadData];
 }
@@ -52,7 +58,10 @@ static NSString* cellIdentifier = @"PMLocationsMenuViewControllerCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    PMLocationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell){
+        cell= [[PMLocationTableViewCell alloc] initWithReuseIdentifier:cellIdentifier];
+    }
 
     [self configureCell:cell forRowAtIndexPath:indexPath];
     return cell;

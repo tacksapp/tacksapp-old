@@ -1,12 +1,19 @@
-## Intro
-This is a lightweight ActiveRecord way of managing Core Data objects.
-The syntax is borrowed from Ruby on Rails.<br>
-And yeah, no AppDelegate code.
-It's fully tested with [Kiwi](https://github.com/allending/Kiwi).
+# ObjectiveRecord [![CocoaPod][pd-bdg]][pd] [![Build Status][ci-bdg]][ci]
 
-[![Build Status](https://travis-ci.org/supermarin/ObjectiveRecord.png?branch=master)](https://travis-ci.org/supermarin/ObjectiveRecord)
+[pd-bdg]: https://img.shields.io/cocoapods/v/ObjectiveRecord.svg
+[pd]: http://cocoadocs.org/docsets/ObjectiveRecord
+[ci-bdg]: https://travis-ci.org/supermarin/ObjectiveRecord.svg
+[ci]: https://travis-ci.org/supermarin/ObjectiveRecord
+
+Objective Record is a lightweight ActiveRecord way of managing Core Data
+objects. If you've used Ruby on Rails before, it might sound
+familiar.
+
+No AppDelegate code required. It's fully tested with
+[Kiwi](https://github.com/allending/Kiwi).
 
 #### Usage
+
 1. Install with [CocoaPods](http://cocoapods.org) or clone
 2. `#import "ObjectiveRecord.h"` in your model or .pch file.
 
@@ -35,7 +42,7 @@ NSArray *people = [Person all];
 NSArray *johns = [Person where:@"name == 'John'"];
 
 // And of course, John Doe!
-Person *johnDoe = [Person find:@"name == 'John' AND surname == 'Doe'"];
+Person *johnDoe = [Person find:@"name == %@ AND surname == %@", @"John", @"Doe"];
 
 // Members over 18 from NY
 NSArray *people = [Person where:@{ 
@@ -65,8 +72,7 @@ NSArray *reversedPeople = [Person where:@{@"name" : @"John"}
 NSArray *people = [Person allWithOrder:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
 
 // And multiple orderings with any of the above
-NSArray *morePeople = [Person allWithOrder:@[@{@"surname" : @"ASC"},
-                                             @{@"name" : @"DESC"}]];
+NSArray *morePeople = [Person allWithOrder:@"surname ASC, name DESC"];
 
 // Just the first 5 people named John sorted by last name
 NSArray *fivePeople = [Person where:@"name == 'John'"
@@ -121,7 +127,7 @@ john.surname = @"Wayne";
 [john save];
 
 // find / delete
-[[Person where: @{ "member" : @NO }] each:^(Person *person) {
+[[Person where: @{ @"member" : @NO }] each:^(Person *person) {
     [person delete];
 }];
 ```
@@ -166,3 +172,8 @@ ObjectiveRecord supports CoreData's in-memory store. In any place, before your t
 #### Roadmap
 
 - NSIncrementalStore support
+
+## License
+
+ObjectiveRecord is available under the MIT license. See the LICENSE file
+for more information.

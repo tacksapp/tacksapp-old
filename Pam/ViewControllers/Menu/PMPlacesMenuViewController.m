@@ -9,12 +9,19 @@
 #import "Place.h"
 #import "PMLocationsMenuViewController.h"
 #import "PMMapViewController.h"
+#import "PMPlaceTableViewCell.h"
 
 static NSString* cellIdentifier = @"PMRootMenuViewControllerCell";
 
 @interface PMPlacesMenuViewController ()<UIGestureRecognizerDelegate, UIAlertViewDelegate>
 @property(nonatomic, strong) NSArray *places;
+@property(nonatomic, strong) Place *currentlyEditingPlace;
+
 - (void)didLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
+
+- (void)startAddPlace;
+
+- (void)startEditPlace:(Place *)place;
 @end
 
 @implementation PMPlacesMenuViewController {
@@ -24,7 +31,6 @@ static NSString* cellIdentifier = @"PMRootMenuViewControllerCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle:@"Places"];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
 
     self.navigationItem.leftBarButtonItem= [[UIBarButtonItem alloc]
             initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(startAddPlace)];
@@ -57,26 +63,43 @@ static NSString* cellIdentifier = @"PMRootMenuViewControllerCell";
 }
 
 
-#pragma mark Add Location
+#pragma mark Add/Edit Location
 - (void)startAddPlace {
     // TODO: implement with semi-transparent modal instead
 
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"New Place" message:@"Please enter place name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alert.tag=1;
     [alert show];
-
 }
+-(void)startEditPlace:(Place*)place{
+    self.currentlyEditingPlace= place;
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSStringWithFormat(@"Edit %@", place.title) message:@"Please enter a new place name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alert.tag=2;
+    [alert show];
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex==1){
-        NSString *placeName= [[alertView textFieldAtIndex:0] text];
+    if (alertView.tag==1){ // add place
+        if (buttonIndex==1){ // OK
+            NSString *placeName= [[alertView textFieldAtIndex:0] text];
 
-        Place *place=[Place create:@{
-                @"title" : placeName,
-        }];
-        [place save];
-
-        [self refreshData];
+            Place *place=[Place create:@{
+                    @"title" : placeName,
+            }];
+            [place save];
+        }
     }
+    else if (alertView.tag==2){ // edit place
+        if (buttonIndex==1){ // OK
+            NSString *placeName= [[alertView textFieldAtIndex:0] text];
+            [self.currentlyEditingPlace setTitle:placeName];
+            [self.currentlyEditingPlace save];
+        }
+        [self setCurrentlyEditingPlace:nil];
+    }
+    [self refreshData];
 }
 
 
@@ -94,7 +117,11 @@ static NSString* cellIdentifier = @"PMRootMenuViewControllerCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    PMPlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+
+    if(!cell){
+        cell= [[PMPlaceTableViewCell alloc] initWithReuseIdentifier:cellIdentifier];
+    }
 
     [self configureCell:cell forRowAtIndexPath:indexPath];
     return cell;
@@ -103,7 +130,8 @@ static NSString* cellIdentifier = @"PMRootMenuViewControllerCell";
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     Place *place= [self.places objectAtIndex:(NSUInteger) indexPath.row];
 
-    [cell.textLabel setText:NSStringWithFormat (@"%@%@", place.title, [place isDefault]?@"!":@"")];
+    [cell.textLabel setText:NSStringWithFormat (@"%@ %@", place.title, [place isDefault]?@"(default)":@"")];
+    [cell setAccessoryType:UITableViewCellAccessoryDetailButton];
 }
 
 #pragma mark UITableViewDelegate
@@ -115,7 +143,11 @@ static NSString* cellIdentifier = @"PMRootMenuViewControllerCell";
     [viewController setDelegate:self.delegate];
 
     [self.navigationController pushViewController:viewController animated:YES];
+}
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    Place *place= [self.places objectAtIndex:indexPath.row];
+    [self startEditPlace:place];
 }
 
 @end

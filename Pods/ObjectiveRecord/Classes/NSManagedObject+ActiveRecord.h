@@ -1,17 +1,40 @@
+// NSManagedObject+ActiveRecord.h
 //
-//  NSManagedObject+ActiveRecord.h
-//  WidgetPush
+// Copyright (c) 2014 Marin Usalj <http://supermar.in>
 //
-//  Created by Marin Usalj on 4/15/12.
-//  Copyright (c) 2012 http://mneorr.com. All rights reserved.
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
 #import <CoreData/CoreData.h>
 #import "NSManagedObject+Mappings.h"
 #import "CoreDataManager.h"
 
 @interface NSManagedObjectContext (ActiveRecord)
+
+/**
+ The default context (as defined on the @c CoreDataManager singleton).
+
+ @see -[CoreDataManager managedObjectContext]
+
+ @return A managed object context.
+ */
 + (NSManagedObjectContext *)defaultContext;
+
 @end
 
 @interface NSManagedObject (ActiveRecord)
@@ -29,15 +52,14 @@
 
 + (NSArray *)all;
 + (NSArray *)allWithOrder:(id)order;
-+ (NSArray *)where:(id)condition;
++ (NSArray *)where:(id)condition, ...;
 + (NSArray *)where:(id)condition order:(id)order;
 + (NSArray *)where:(id)condition limit:(NSNumber *)limit;
 + (NSArray *)where:(id)condition order:(id)order limit:(NSNumber *)limit;
-+ (NSArray *)whereFormat:(NSString *)format, ...;
 + (instancetype)findOrCreate:(NSDictionary *)attributes;
-+ (instancetype)find:(NSDictionary *)attributes;
++ (instancetype)find:(id)condition, ...;
 + (NSUInteger)count;
-+ (NSUInteger)countWhere:(id)condition;
++ (NSUInteger)countWhere:(id)condition, ...;
 
 #pragma mark - Custom Context
 
@@ -53,7 +75,7 @@
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context limit:(NSNumber *)limit;
 + (NSArray *)where:(id)condition inContext:(NSManagedObjectContext *)context order:(id)order limit:(NSNumber *)limit;
 + (instancetype)findOrCreate:(NSDictionary *)properties inContext:(NSManagedObjectContext *)context;
-+ (instancetype)find:(NSDictionary *)attributes inContext:(NSManagedObjectContext *)context;
++ (instancetype)find:(id)condition inContext:(NSManagedObjectContext *)context;
 + (NSUInteger)countInContext:(NSManagedObjectContext *)context;
 + (NSUInteger)countWhere:(id)condition inContext:(NSManagedObjectContext *)context;
 

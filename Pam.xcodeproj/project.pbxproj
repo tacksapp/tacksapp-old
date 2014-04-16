@@ -7,15 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19656057A89CFE90DBD17D44 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196560426722917856212ACD /* DetailViewController.m */; };
 		196561DCA8C4BBAC1E7D8E33 /* frontViewControllerDropShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196561E9813AB966EA5EF5B7 /* frontViewControllerDropShadow@2x.png */; };
+		1965631182FE6EBF0AF93252 /* UIView+blurring.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656172F5F5EB27709FBD8A /* UIView+blurring.m */; };
+		1965646D3062ED4CD1DEDED1 /* NSMutableArray+extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656D6E22EDE3DF49FAC29F /* NSMutableArray+extensions.m */; };
+		19656584F2F3195F07917AB8 /* PMPlaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 196563DE67E4D526C0CB1A41 /* PMPlaceTableViewCell.m */; };
 		196565CD8B1148C8DD8D7572 /* PMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 196567B1F1E58495654BEFF0 /* PMMapViewController.m */; };
 		19656621D16BDC5051CF41DF /* frontViewControllerDropShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 19656014DDA2A31A7118CA3D /* frontViewControllerDropShadow.png */; };
+		1965664E7E8B7A42397F78CC /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656FDD5E330AC9668BB6D6 /* UIView+AutoLayout.m */; };
 		196569676BC142E84C5C8B45 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 196568BA511788FA5ACB0B7F /* CoreLocation.framework */; };
-		19656A570F9E58CB78E0E901 /* PMLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1965638ED171CB45ACF992CA /* PMLocationTableViewCell.m */; };
+		19656A4E6F85E2BB509634CD /* IDTransitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1965686C7A7B9FEB4FB1B8AB /* IDTransitionController.m */; };
+		19656B23A90E0123B4C985D0 /* IDTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 196561AAB80CAF8CE0A2898F /* IDTransitioningDelegate.m */; };
 		19656B3B4497BC1502ED4007 /* PMLocationsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656402BAFD233244331AA3 /* PMLocationsMenuViewController.m */; };
 		19656CAEEB7C71F95ABC5F2C /* PMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1965601A3F423603B697151B /* PMAnnotation.m */; };
 		19656D8FE9BFF39C2CBFB0B6 /* MKMapView+zooming.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656586EA4A50146A00C0D5 /* MKMapView+zooming.m */; };
+		19656D947C67C56EAE0DC953 /* PMLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 196564EE381BE00CE2302FCB /* PMLocationTableViewCell.m */; };
 		19656D9E8071E44FA9515C2A /* PMTemporaryAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 196561B96C3CA723B7D7EEEA /* PMTemporaryAnnotation.m */; };
+		19656E22F65CABC6B0AA15AE /* PMMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656553E4393902119FFA59 /* PMMenuTableViewCell.m */; };
 		19656E2CDDC4476083C4D1D9 /* PMPlacesMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656FB553E8F95280F5FC7A /* PMPlacesMenuViewController.m */; };
 		19656FC34A1A2479C53C558D /* JSSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656D034A86855BD96381EA /* JSSlidingViewController.m */; };
 		3C7C681718941C600063C134 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7C681618941C600063C134 /* Foundation.framework */; };
@@ -57,23 +65,39 @@
 /* Begin PBXFileReference section */
 		19656014DDA2A31A7118CA3D /* frontViewControllerDropShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frontViewControllerDropShadow.png; sourceTree = "<group>"; };
 		1965601A3F423603B697151B /* PMAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMAnnotation.m; sourceTree = "<group>"; };
+		196560426722917856212ACD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		1965615A9A9A4F4828FD2599 /* PMMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMenuTableViewCell.h; sourceTree = "<group>"; };
+		19656172F5F5EB27709FBD8A /* UIView+blurring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+blurring.m"; sourceTree = "<group>"; };
+		196561AAB80CAF8CE0A2898F /* IDTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTransitioningDelegate.m; sourceTree = "<group>"; };
 		196561B96C3CA723B7D7EEEA /* PMTemporaryAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTemporaryAnnotation.m; sourceTree = "<group>"; };
 		196561E9813AB966EA5EF5B7 /* frontViewControllerDropShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frontViewControllerDropShadow@2x.png"; sourceTree = "<group>"; };
 		196561F95517EA9160759C38 /* PMLocationsMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLocationsMenuViewController.h; sourceTree = "<group>"; };
-		1965621DD20BF9DBDDB97167 /* PMLocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLocationTableViewCell.h; sourceTree = "<group>"; };
 		19656234E97519E9B68DC7A4 /* PMAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMAnnotation.h; sourceTree = "<group>"; };
-		1965638ED171CB45ACF992CA /* PMLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMLocationTableViewCell.m; sourceTree = "<group>"; };
+		19656243088F51742A04C854 /* IDTransitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTransitionController.h; sourceTree = "<group>"; };
+		196562C8BF4BEECCF6981D5B /* PMLocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMLocationTableViewCell.h; sourceTree = "<group>"; };
+		196563DE67E4D526C0CB1A41 /* PMPlaceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPlaceTableViewCell.m; sourceTree = "<group>"; };
+		196563E71D1EED973A7F5434 /* UIView+blurring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+blurring.h"; sourceTree = "<group>"; };
 		19656402BAFD233244331AA3 /* PMLocationsMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMLocationsMenuViewController.m; sourceTree = "<group>"; };
+		196564EE381BE00CE2302FCB /* PMLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMLocationTableViewCell.m; sourceTree = "<group>"; };
+		19656553E4393902119FFA59 /* PMMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMenuTableViewCell.m; sourceTree = "<group>"; };
 		19656586EA4A50146A00C0D5 /* MKMapView+zooming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+zooming.m"; sourceTree = "<group>"; };
+		196565EAEE3CB6C2C7D26643 /* IDTransitioningDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTransitioningDelegate.h; sourceTree = "<group>"; };
+		1965667466722AF072CC82A5 /* UIView+AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoLayout.h"; sourceTree = "<group>"; };
 		1965674AB0F42EF948E2540A /* JSSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSSlidingViewController.h; sourceTree = "<group>"; };
 		1965675F9D2CC599CE3783EE /* PMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMapViewController.h; sourceTree = "<group>"; };
 		196567B1F1E58495654BEFF0 /* PMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMapViewController.m; sourceTree = "<group>"; };
 		196567F1A3B76305B385D319 /* PMTemporaryAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTemporaryAnnotation.h; sourceTree = "<group>"; };
+		1965686C7A7B9FEB4FB1B8AB /* IDTransitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTransitionController.m; sourceTree = "<group>"; };
 		196568BA511788FA5ACB0B7F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		196568EFE21E6EAE78AD6208 /* PMPlacesMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPlacesMenuViewController.h; sourceTree = "<group>"; };
 		196569D6563218CC4B4320A7 /* MKMapView+zooming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+zooming.h"; sourceTree = "<group>"; };
+		19656BF49199BD89ABB834E7 /* PMPlaceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPlaceTableViewCell.h; sourceTree = "<group>"; };
 		19656D034A86855BD96381EA /* JSSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSlidingViewController.m; sourceTree = "<group>"; };
+		19656D6E22EDE3DF49FAC29F /* NSMutableArray+extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+extensions.m"; sourceTree = "<group>"; };
+		19656EF13DA81AE0D3CD16AB /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		19656F3B3874E3E111974721 /* NSMutableArray+extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+extensions.h"; sourceTree = "<group>"; };
 		19656FB553E8F95280F5FC7A /* PMPlacesMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPlacesMenuViewController.m; sourceTree = "<group>"; };
+		19656FDD5E330AC9668BB6D6 /* UIView+AutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoLayout.m"; sourceTree = "<group>"; };
 		3C7C681318941C600063C134 /* Pam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C7C681618941C600063C134 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3C7C681818941C600063C134 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -138,8 +162,27 @@
 			children = (
 				196567B1F1E58495654BEFF0 /* PMMapViewController.m */,
 				1965675F9D2CC599CE3783EE /* PMMapViewController.h */,
+				196561AAB80CAF8CE0A2898F /* IDTransitioningDelegate.m */,
+				196565EAEE3CB6C2C7D26643 /* IDTransitioningDelegate.h */,
+				196560426722917856212ACD /* DetailViewController.m */,
+				19656EF13DA81AE0D3CD16AB /* DetailViewController.h */,
+				1965686C7A7B9FEB4FB1B8AB /* IDTransitionController.m */,
+				19656243088F51742A04C854 /* IDTransitionController.h */,
 			);
 			path = Maps;
+			sourceTree = "<group>";
+		};
+		1965637F17191DE121AF0F82 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				196562C8BF4BEECCF6981D5B /* PMLocationTableViewCell.h */,
+				196564EE381BE00CE2302FCB /* PMLocationTableViewCell.m */,
+				196563DE67E4D526C0CB1A41 /* PMPlaceTableViewCell.m */,
+				19656BF49199BD89ABB834E7 /* PMPlaceTableViewCell.h */,
+				19656553E4393902119FFA59 /* PMMenuTableViewCell.m */,
+				1965615A9A9A4F4828FD2599 /* PMMenuTableViewCell.h */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		196567037C92F7F5D2B69EAF /* Map */ = {
@@ -196,8 +239,7 @@
 				19656FB553E8F95280F5FC7A /* PMPlacesMenuViewController.m */,
 				19656402BAFD233244331AA3 /* PMLocationsMenuViewController.m */,
 				196561F95517EA9160759C38 /* PMLocationsMenuViewController.h */,
-				1965638ED171CB45ACF992CA /* PMLocationTableViewCell.m */,
-				1965621DD20BF9DBDDB97167 /* PMLocationTableViewCell.h */,
+				1965637F17191DE121AF0F82 /* TableViewCells */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -207,6 +249,12 @@
 			children = (
 				19656586EA4A50146A00C0D5 /* MKMapView+zooming.m */,
 				196569D6563218CC4B4320A7 /* MKMapView+zooming.h */,
+				19656172F5F5EB27709FBD8A /* UIView+blurring.m */,
+				196563E71D1EED973A7F5434 /* UIView+blurring.h */,
+				19656FDD5E330AC9668BB6D6 /* UIView+AutoLayout.m */,
+				1965667466722AF072CC82A5 /* UIView+AutoLayout.h */,
+				19656D6E22EDE3DF49FAC29F /* NSMutableArray+extensions.m */,
+				19656F3B3874E3E111974721 /* NSMutableArray+extensions.h */,
 			);
 			name = Categories;
 			path = categories;
@@ -530,7 +578,15 @@
 				19656E2CDDC4476083C4D1D9 /* PMPlacesMenuViewController.m in Sources */,
 				19656B3B4497BC1502ED4007 /* PMLocationsMenuViewController.m in Sources */,
 				19656CAEEB7C71F95ABC5F2C /* PMAnnotation.m in Sources */,
-				19656A570F9E58CB78E0E901 /* PMLocationTableViewCell.m in Sources */,
+				19656B23A90E0123B4C985D0 /* IDTransitioningDelegate.m in Sources */,
+				19656057A89CFE90DBD17D44 /* DetailViewController.m in Sources */,
+				19656A4E6F85E2BB509634CD /* IDTransitionController.m in Sources */,
+				1965631182FE6EBF0AF93252 /* UIView+blurring.m in Sources */,
+				1965664E7E8B7A42397F78CC /* UIView+AutoLayout.m in Sources */,
+				19656D947C67C56EAE0DC953 /* PMLocationTableViewCell.m in Sources */,
+				19656584F2F3195F07917AB8 /* PMPlaceTableViewCell.m in Sources */,
+				19656E22F65CABC6B0AA15AE /* PMMenuTableViewCell.m in Sources */,
+				1965646D3062ED4CD1DEDED1 /* NSMutableArray+extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
