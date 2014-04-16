@@ -12,6 +12,7 @@ xcuserdata
 *.xccheckout
 # Build products
 build/
+Build/
 *.o
 *.LinkFileList
 *.hmap
@@ -21,8 +22,6 @@ build/
 *~
 *.dat
 *.dep
-# Cocoapods
-Pods
 # AppCode specific files
 .idea/
 *.iml
