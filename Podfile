@@ -9,6 +9,6 @@ pod 'ObjectiveRecord', :git => 'https://github.com/supermarin/ObjectiveRecord.gi
 pod 'ObjectiveSugar'
 
 pod 'UIImageEffects'
-#link_with 'PamTests'
+#link_with 'TacksTests'
 
 pod 'SparkInspector'
