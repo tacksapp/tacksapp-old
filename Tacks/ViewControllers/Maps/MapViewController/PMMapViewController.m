@@ -12,13 +12,12 @@
 #import "DetailViewController.h"
 
 @interface PMMapViewController ()
+@property(nonatomic, strong) PMMapViewManager *manager;
+
 @property(nonatomic, strong) UIButton *centreMapButton;
 @property(nonatomic, strong) UIButton *revealMenuButton;
 
-@property(nonatomic, strong) PMMapViewManager *manager;
-
 - (void)didTouchRevealMenuButton:(id)sender;
-- (void)didLongTouchOnMap:(id)sender;
 @end
 
 
@@ -82,8 +81,12 @@
 - (void)focusLocations:(NSArray*)locations {
     [self.manager focusLocations:locations];
 }
+
 - (void)selectLocation:(Location *)location {
     [self.manager selectLocation:location];
+}
+- (MKUserLocation *)userLocation {
+    return self.manager.userLocation;
 }
 
 #pragma mark Touch Actions:
@@ -100,11 +103,11 @@
 #pragma mark Accessors:
 - (MKMapView *)mapView {
     if (!_mapView){
-        _mapView= [[MKMapView alloc] initWithFrame:self.view.bounds]; // MBXMapView.alloc.initWithFrame(CGRectZero, mapID: "iandundas.map-2sgvzixp")
-//        _mapView= [[OCMapView alloc] initWithFrame:self.view.bounds]; // MBXMapView.alloc.initWithFrame(CGRectZero, mapID: "iandundas.map-2sgvzixp")
+        _mapView= [[MKMapView alloc] initWithFrame:self.view.bounds];
+        // _mapView= [[OCMapView alloc] initWithFrame:self.view.bounds];
+        // _mapView= MBXMapView.alloc.initWithFrame(CGRectZero, mapID: "iandundas.map-2sgvzixp")
 
         _mapView .mapType= MKMapTypeStandard;
-
     }
     return _mapView;
 }

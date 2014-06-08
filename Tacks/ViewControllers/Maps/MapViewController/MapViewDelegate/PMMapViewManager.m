@@ -16,9 +16,6 @@
 @property(nonatomic, strong) id<MKAnnotation> selectedAnnotation;
 
 @property(nonatomic, weak) MKMapView *mapView;
-
-- (void)didSelectAnnotationCallout:(id)sender;
-- (void)focusCoordinate:(CLLocationCoordinate2D)coordinate2D;
 @end
 
 @implementation PMMapViewManager {}
@@ -53,7 +50,7 @@
 }
 
 //todo refactor
--(void)createNewEmptyLocationAtCoordinate:(CLLocationCoordinate2D)coordinate {
+-(void)createAndEditLocationAtCoordinate:(CLLocationCoordinate2D)coordinate {
     PMTemporaryAnnotation *annotation= [[PMTemporaryAnnotation alloc]init];
     annotation.coordinate= coordinate;
 //    annotation.title= @"New place";
@@ -61,8 +58,12 @@
     [self.mapView addAnnotation:annotation];
 }
 
-
-
+-(void)editLocation:(Location *)location{
+    [self editLocation:location fromPoint:CGPointMake (0, 0)];
+}
+-(void)editLocation:(Location *)location fromPoint:(CGPoint)point{
+    [self.delegate showEditLocationViewController:location fromPoint:point];
+}
 
 #pragma mark Notifications:
 - (void) receiveLocationDidSaveNotification:(NSNotification*)notification{
@@ -90,8 +91,8 @@
 
 - (void) focusMapOnCurrentLocation{
     if (self.userLocation)
-        // todo use self.focusCoordinate?
-        [self.mapView setCenterCoordinate:self.userLocation.location.coordinate animated:YES];
+        [self focusCoordinate:self.userLocation.location.coordinate];
+//        [self.mapView setCenterCoordinate:self.userLocation.location.coordinate animated:YES];
     else{
         // TODO: show notification that we don't have a user location.
         NSLog(@"User location not available");
@@ -158,25 +159,53 @@
     [self setSelectedAnnotation:view.annotation];
 }
 
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
+    NSLog(@"Did add annotation views: %@", views);
+
+    [views each:^(MKAnnotationView *annotationView) {
+        if ([annotationView.annotation isKindOfClass:MKUserLocation.class]){
+            // We're adding to the map the Current Location pin point
+
+            annotationView.rightCalloutAccessoryView = [UIButton
+                    buttonWithType:UIButtonTypeContactAdd
+            ];
+        }
+    }];
+}
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    NSLog(@"Did deselect annotation view: %@", view);
+}
+
 // Did select the popout bubble
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
 
     if ([view.annotation isKindOfClass:PMAnnotation.class]){
         Location *location= ((PMAnnotation*)view.annotation).location;
-
         CGPoint windowPoint = [control convertPoint:control.bounds.origin toView:nil];
-        [self.delegate showEditLocationViewController:location fromPoint:windowPoint];
+
+        [self editLocation:location fromPoint:windowPoint];
     }
     else{
+        [self createAndEditLocationAtCoordinate:view.annotation.coordinate];
+
         NSLog(@"Can't edit location for Annotation of type %@", NSStringFromClass (PMTemporaryAnnotation.class));
     }
 }
 
+//- (void)mapView:(MKMapView *)mapView didAddOverlayRenderers:(NSArray *)renderers{
+//}
+//- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay{
+//}
 -(void) didLongTouchOnMap:(UIGestureRecognizer *)sender{
 
     if (sender.state==UIGestureRecognizerStateBegan){
-        CLLocationCoordinate2D coordinate= [self.mapView convertPoint:[sender locationInView:self.mapView] toCoordinateFromView:self.mapView];
-        [self createNewEmptyLocationAtCoordinate:coordinate];
+        CLLocationCoordinate2D coordinate= [self.mapView
+                    convertPoint:[sender locationInView:self.mapView]
+            toCoordinateFromView:self.mapView
+        ];
+
+        [self createAndEditLocationAtCoordinate:coordinate];
     }
 }
 
@@ -199,4 +228,15 @@
 - (MKUserLocation *)userLocation{
     return self.mapView.userLocation;
 }
+
+#pragma mark - Setters:
+- (void)setSelectedAnnotation:(id <MKAnnotation>)selectedAnnotation {
+    _selectedAnnotation = selectedAnnotation;
+
+    if ([NSStringFromClass(selectedAnnotation.class) isEqualToString:@"MKModernUserLocationView"]){
+        NSLog (@"Debug: did select current location");
+    }
+
+}
+
 @end

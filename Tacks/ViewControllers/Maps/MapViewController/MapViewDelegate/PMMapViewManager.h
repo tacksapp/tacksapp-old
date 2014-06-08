@@ -24,6 +24,6 @@
 @end
 
 @protocol PMMapViewControllerDelegate
-@property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, strong, readonly) MKMapView *mapView;
 - (void)showEditLocationViewController:(Location *)location fromPoint:(CGPoint)animateFromPoint;
 @end
