@@ -5,16 +5,20 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "PMMapViewManager.h"
 
 @class Location;
 
+@protocol MapDisplayProtocol, PMMapViewControllerDelegate;
+@interface PMMapViewController : UIViewController <MapDisplayProtocol, PMMapViewControllerDelegate>
+
+
+@end
+
 @protocol MapDisplayProtocol
 -(void)focusLocation:(Location*)location;
--(void) selectLocation:(Location*)location;
+-(void)selectLocation:(Location*)location;
 -(void)focusLocations:(NSArray*)locations;
 -(MKUserLocation*)userLocation;
 @end
 
-@interface PMMapViewController : UIViewController <MapDisplayProtocol>
-@property (nonatomic, strong) MKMapView *mapView;
-@end
