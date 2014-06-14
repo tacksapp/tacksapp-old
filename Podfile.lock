@@ -19,6 +19,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - CompactConstraint (0.1.0)
+  - GVUserDefaults (0.9.4)
   - ObjectiveRecord (1.5.0):
     - ObjectiveSugar
   - ObjectiveSugar (1.1.0)
@@ -30,6 +31,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - CompactConstraint (~> 0.1)
+  - GVUserDefaults
   - ObjectiveRecord (from `https://github.com/supermarin/ObjectiveRecord.git`)
   - ObjectiveSugar
   - OCMapView (~> 0.1.0)
@@ -44,6 +46,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 47947303319594706f48a55185ea95a95159ab94
   CompactConstraint: 28050cd1f9c63c67412a0f3d7f758cb0218de192
+  GVUserDefaults: b706c0a6ed681ea4693143d920dd5bf49845c3a3
   ObjectiveRecord: 53dc392fbb4c8a8942f966bab9da8d9441532765
   ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
   OCMapView: b6c23a490834c7ac6d4c125cb8431e0ba33abcb9

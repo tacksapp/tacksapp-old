@@ -54,6 +54,12 @@
 #define COCOAPODS_VERSION_MINOR_CompactConstraint 1
 #define COCOAPODS_VERSION_PATCH_CompactConstraint 0
 
+// GVUserDefaults
+#define COCOAPODS_POD_AVAILABLE_GVUserDefaults
+#define COCOAPODS_VERSION_MAJOR_GVUserDefaults 0
+#define COCOAPODS_VERSION_MINOR_GVUserDefaults 9
+#define COCOAPODS_VERSION_PATCH_GVUserDefaults 4
+
 // OCMapView
 #define COCOAPODS_POD_AVAILABLE_OCMapView
 #define COCOAPODS_VERSION_MAJOR_OCMapView 0

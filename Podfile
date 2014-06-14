@@ -11,6 +11,8 @@ pod 'ObjectiveSugar'
 pod 'CompactConstraint', '~> 0.1'
 pod 'UIView+Positioning', '~> 1.0'
 
+pod 'GVUserDefaults'
+
 pod 'UIImageEffects'
 #link_with 'TacksTests'
 
