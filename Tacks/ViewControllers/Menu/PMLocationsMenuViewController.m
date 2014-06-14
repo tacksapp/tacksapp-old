@@ -11,6 +11,8 @@
 #import "PMAppDelegate.h"
 #import "JSSlidingViewController.h"
 #import "PMLocationTableViewCell.h"
+#import "GVUserDefaults.h"
+#import "GVUserDefaults+defaults.h"
 
 static NSString* cellIdentifier = @"PMLocationsMenuViewControllerCell";
 
@@ -89,6 +91,11 @@ static NSString* cellIdentifier = @"PMLocationsMenuViewControllerCell";
         __weak typeof(self)weakSelf = self;
         [[AppDelegate slidingViewController] closeSlider:YES completion:^{
             __strong typeof(weakSelf)strongSelf = weakSelf;
+
+            // set this place as the default:
+            [[GVUserDefaults standardUserDefaults]
+                    setFilterByPlaceObjectID:self.place.objectID.URIRepresentation.absoluteString];
+
             [strongSelf.delegate filterByPlace:self.place];
 
 //            [strongSelf.delegate focusLocations:self.locations];

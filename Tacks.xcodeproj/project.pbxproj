@@ -11,6 +11,7 @@
 		196561DCA8C4BBAC1E7D8E33 /* frontViewControllerDropShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 196561E9813AB966EA5EF5B7 /* frontViewControllerDropShadow@2x.png */; };
 		1965631182FE6EBF0AF93252 /* UIView+blurring.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656172F5F5EB27709FBD8A /* UIView+blurring.m */; };
 		1965646D3062ED4CD1DEDED1 /* NSMutableArray+extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656D6E22EDE3DF49FAC29F /* NSMutableArray+extensions.m */; };
+		196564F1A9FE774681327289 /* GVUserDefaults+defaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 1965646D96B26778E42439D8 /* GVUserDefaults+defaults.m */; };
 		19656584F2F3195F07917AB8 /* PMPlaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 196563DE67E4D526C0CB1A41 /* PMPlaceTableViewCell.m */; };
 		19656621D16BDC5051CF41DF /* frontViewControllerDropShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 19656014DDA2A31A7118CA3D /* frontViewControllerDropShadow.png */; };
 		1965664E7E8B7A42397F78CC /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 19656FDD5E330AC9668BB6D6 /* UIView+AutoLayout.m */; };
@@ -80,6 +81,7 @@
 		196563E71D1EED973A7F5434 /* UIView+blurring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+blurring.h"; sourceTree = "<group>"; };
 		19656402BAFD233244331AA3 /* PMLocationsMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMLocationsMenuViewController.m; sourceTree = "<group>"; };
 		19656422E97F4DC978C83051 /* PMMapViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMapViewManager.h; sourceTree = "<group>"; };
+		1965646D96B26778E42439D8 /* GVUserDefaults+defaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GVUserDefaults+defaults.m"; sourceTree = "<group>"; };
 		196564EE381BE00CE2302FCB /* PMLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMLocationTableViewCell.m; sourceTree = "<group>"; };
 		1965653FD94C1CBAF9E3EE34 /* PMMapViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMapViewManager.m; sourceTree = "<group>"; };
 		19656553E4393902119FFA59 /* PMMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMenuTableViewCell.m; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		19656CFD2D53E832D53DD3E0 /* PMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMapViewController.h; sourceTree = "<group>"; };
 		19656D034A86855BD96381EA /* JSSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSSlidingViewController.m; sourceTree = "<group>"; };
 		19656D6E22EDE3DF49FAC29F /* NSMutableArray+extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+extensions.m"; sourceTree = "<group>"; };
+		19656EB25D19739F9946C33F /* GVUserDefaults+defaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GVUserDefaults+defaults.h"; sourceTree = "<group>"; };
 		19656ED39E7A0DE73B60EE75 /* PMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMapViewController.m; sourceTree = "<group>"; };
 		19656EF13DA81AE0D3CD16AB /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		19656F3B3874E3E111974721 /* NSMutableArray+extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+extensions.h"; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 				1965667466722AF072CC82A5 /* UIView+AutoLayout.h */,
 				19656D6E22EDE3DF49FAC29F /* NSMutableArray+extensions.m */,
 				19656F3B3874E3E111974721 /* NSMutableArray+extensions.h */,
+				1965646D96B26778E42439D8 /* GVUserDefaults+defaults.m */,
+				19656EB25D19739F9946C33F /* GVUserDefaults+defaults.h */,
 			);
 			name = Categories;
 			path = categories;
@@ -609,6 +614,7 @@
 				1965646D3062ED4CD1DEDED1 /* NSMutableArray+extensions.m in Sources */,
 				196567AFB5492D8D2196EF4B /* PMMapViewController.m in Sources */,
 				19656D281278AA6BF63266E4 /* PMMapViewManager.m in Sources */,
+				196564F1A9FE774681327289 /* GVUserDefaults+defaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,12 +773,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tacks/Tacks-Prefix.pch";
 				INFOPLIST_FILE = "Tacks/Tacks-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9FA44769-9951-404F-840E-4670A93B0788";
+				PROVISIONING_PROFILE = "FA050394-F9E2-41BE-B6F9-CADDAD398621";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -784,12 +791,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tacks/Tacks-Prefix.pch";
 				INFOPLIST_FILE = "Tacks/Tacks-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9FA44769-9951-404F-840E-4670A93B0788";
+				PROVISIONING_PROFILE = "FA050394-F9E2-41BE-B6F9-CADDAD398621";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};

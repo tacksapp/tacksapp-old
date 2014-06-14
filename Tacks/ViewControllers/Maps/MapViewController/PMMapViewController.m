@@ -4,6 +4,7 @@
 //
 
 #import <MapKit/MapKit.h>
+#import <ObjectiveSugar/NSArray+ObjectiveSugar.h>
 #import "PMMapViewController.h"
 #import "Location.h"
 #import "PMAppDelegate.h"
@@ -11,6 +12,7 @@
 #import "IDTransitioningDelegate.h"
 #import "DetailViewController.h"
 #import "Place.h"
+#import "GVUserDefaults+defaults.h"
 
 @interface PMMapViewController ()
 @property(nonatomic, strong) PMMapViewManager *manager;
@@ -39,7 +41,23 @@
                     style:UIBarButtonItemStylePlain
                    target:self.manager
                    action:@selector (focusAllMapAnnotations)];
-    [self filterByPlace:nil];
+
+
+    // Try to restore previously shown Place: 
+    NSString *placeID= [[GVUserDefaults standardUserDefaults] filterByPlaceObjectID];
+    if (placeID){
+
+        NSManagedObjectID *ID= [[[CoreDataManager sharedManager] persistentStoreCoordinator]
+                managedObjectIDForURIRepresentation:[NSURL URLWithString:placeID]
+        ];
+
+        Place *place = [Place find:[NSPredicate predicateWithFormat:@"SELF = %@", ID]];
+        [self filterByPlace:place];
+    }
+    else{
+        [self filterByPlace:nil];
+    }
+
 }
 
 - (void) filterByPlace:(Place *)place{
