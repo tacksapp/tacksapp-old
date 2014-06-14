@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (strong, nonatomic) PMPlacesMenuViewController *menuViewController;
+@property (strong, nonatomic) UINavigationController *mapNavigationController;
 @property (strong, nonatomic) JSSlidingViewController *slidingViewController;
 
 @end

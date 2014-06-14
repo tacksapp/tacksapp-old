@@ -33,12 +33,14 @@
 
     PMMapViewController *mainMapViewController = [[PMMapViewController alloc] initWithNibName:nil bundle:nil];
 
+    self.mapNavigationController= [[UINavigationController alloc] initWithRootViewController:mainMapViewController];
+
     self.menuViewController= [[PMPlacesMenuViewController alloc] initWithStyle:UITableViewStylePlain];
     [self.menuViewController setDelegate:mainMapViewController];
-
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.menuViewController];
 
-    self.slidingViewController= [[JSSlidingViewController alloc] initWithFrontViewController:mainMapViewController backViewController:self.navigationController];
+
+    self.slidingViewController= [[JSSlidingViewController alloc] initWithFrontViewController:self.mapNavigationController backViewController:self.navigationController];
     self.slidingViewController.useBouncyAnimations=NO;
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
