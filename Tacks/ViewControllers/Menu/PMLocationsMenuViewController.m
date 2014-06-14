@@ -89,8 +89,9 @@ static NSString* cellIdentifier = @"PMLocationsMenuViewControllerCell";
         __weak typeof(self)weakSelf = self;
         [[AppDelegate slidingViewController] closeSlider:YES completion:^{
             __strong typeof(weakSelf)strongSelf = weakSelf;
+            [strongSelf.delegate filterByPlace:self.place];
 
-            [strongSelf.delegate focusLocations:self.locations];
+//            [strongSelf.delegate focusLocations:self.locations];
         }];
     }
     else if (indexPath.section==1){

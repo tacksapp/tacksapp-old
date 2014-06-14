@@ -7,7 +7,7 @@
 #import <MapKit/MapKit.h>
 #import "PMMapViewManager.h"
 
-@class Location;
+@class Location, Place;
 
 @protocol MapDisplayProtocol, PMMapViewControllerDelegate;
 @interface PMMapViewController : UIViewController <MapDisplayProtocol, PMMapViewControllerDelegate>{
@@ -17,9 +17,10 @@
 @end
 
 @protocol MapDisplayProtocol
+- (void)filterByPlace:(Place *)place;
 -(void)focusLocation:(Location*)location;
--(void)selectLocation:(Location*)location;
 -(void)focusLocations:(NSArray*)locations;
+-(void)selectLocation:(Location*)location;
 -(MKUserLocation*)userLocation;
 @end
 

@@ -10,6 +10,7 @@
 #import "JSSlidingViewController.h"
 #import "IDTransitioningDelegate.h"
 #import "DetailViewController.h"
+#import "Place.h"
 
 @interface PMMapViewController ()
 @property(nonatomic, strong) PMMapViewManager *manager;
@@ -33,11 +34,27 @@
     [self.view addSubview:[self revealMenuButton]];
     [self.view addSubview:[self centreMapButton]];
 
-    NSArray *locations = [Location all];
-    [self.manager plotLocations:locations];
+    self.navigationItem.rightBarButtonItem= [[UIBarButtonItem alloc]
+            initWithTitle:@"Focus"
+                    style:UIBarButtonItemStylePlain
+                   target:self.manager
+                   action:@selector (focusAllMapAnnotations)];
+    [self filterByPlace:nil];
 }
 
-
+- (void) filterByPlace:(Place *)place{
+    if (place){
+        self.title= place.title;
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    }
+    else{
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        self.title= @"All";
+    }
+    [self.manager setFilterPlace:place];
+    [self.manager plotLocations];
+    [self.manager focusAllMapAnnotations];
+}
 
 #pragma mark Transitions
 

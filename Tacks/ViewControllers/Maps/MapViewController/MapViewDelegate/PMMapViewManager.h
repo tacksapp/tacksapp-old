@@ -10,16 +10,22 @@
 
 @protocol PMMapViewControllerDelegate, MapDisplayProtocol;
 @class Location;
+@class Place;
 
 @interface PMMapViewManager : NSObject <MKMapViewDelegate, MapDisplayProtocol>
 @property (nonatomic, weak) id<PMMapViewControllerDelegate> delegate;
 
+@property (nonatomic, strong) Place *filterPlace;
+
 - (instancetype)initWithMapView:(MKMapView *)mapView;
+
+- (void)plotLocations;
 
 - (void)plotLocations:(NSArray *)locations;
 
-- (void)focusMapOnCurrentLocation;
+- (void)focusAllMapAnnotations;
 
+- (void)focusMapOnCurrentLocation;
 - (MKUserLocation *)userLocation;
 @end
 

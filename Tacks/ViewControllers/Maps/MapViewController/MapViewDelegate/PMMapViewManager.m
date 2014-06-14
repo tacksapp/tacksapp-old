@@ -9,6 +9,7 @@
 #import "PMAnnotation.h"
 #import "Location.h"
 #import "PMTemporaryAnnotation.h"
+#import "Place.h"
 
 
 @interface PMMapViewManager ()
@@ -28,8 +29,6 @@
         _mapView .delegate= self;
         _mapView .showsUserLocation= true;
 
-//        _disabledAnnotationAnimations = [NSMutableArray new];
-
         UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc]
                 initWithTarget:self action:@selector(didLongTouchOnMap:)];
         longPressGestureRecognizer .minimumPressDuration= 0.55;
@@ -41,12 +40,29 @@
     return self;
 }
 
+-(void) plotLocations{
+
+    NSArray *locations;
+
+    if (self.filterPlace){
+        locations = [Location where:@{@"place":self.filterPlace}];
+    }
+    else{
+        locations = [Location all];
+    }
+
+    [self removeAllLocations];
+    [self plotLocations:locations];
+}
 
 #pragma mark Drawing on the Map:
 - (void)plotLocations:(NSArray *)locations {
     [locations each:^(Location *location) {
         [self.mapView addAnnotation:location.annotation];
     }];
+}
+-(void)removeAllLocations{
+    [self.mapView removeAnnotations:self.mapView.annotations];
 }
 
 //todo refactor
@@ -55,6 +71,7 @@
     // Create a new Location object
     // and associate it with the coordinate:
     Location *newLocation = [Location create];
+    [newLocation setPlace:self.filterPlace];
     [newLocation setCoordinate:coordinate];
 
     // TODO consider receiving a PMTemporaryAnnotation if useful?
@@ -84,6 +101,12 @@
 
 
 #pragma mark MapView tricks
+- (void) focusAllMapAnnotations{
+    [self.mapView showAnnotations:[self.mapView.annotations select:^BOOL (id <MKAnnotation> annotation) {
+        // filter MKUserLocation because we don't usually want to focus on that in this sense.
+        return ![annotation isKindOfClass:MKUserLocation.class];
+    }] animated:YES];
+}
 -(void)focusCoordinate:(CLLocationCoordinate2D)coordinate2D{
 //    MKCoordinateSpan span= MKCoordinateSpanMake(0.01, 0.01);
 //    MKCoordinateRegion region = MKCoordinateRegionMake(coordinate2D, span);
@@ -107,16 +130,18 @@
     NSLog(@"Changed Region");
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(PMAnnotation *)annotation{
+- (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>)annotation{
 
     static NSString *defaultPinID = @"identifier";
 
     if ([annotation isKindOfClass:MKUserLocation.class])
         return nil; // keep the blue dot.
 
+    PMAnnotation *annotation_ = (PMAnnotation *)annotation;
+
     MKPinAnnotationView *pinAnnotationView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
     if (pinAnnotationView == nil){
-        pinAnnotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+        pinAnnotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation_ reuseIdentifier:defaultPinID];
         pinAnnotationView.enabled = YES;
         pinAnnotationView.canShowCallout = YES;
         pinAnnotationView.draggable= YES;
@@ -132,9 +157,9 @@
 
     }
     else{
-        pinAnnotationView.annotation = annotation;
+        pinAnnotationView.annotation = annotation_;
     }
-    pinAnnotationView.animatesDrop= annotation.animateOnAdd;
+    pinAnnotationView.animatesDrop= annotation_.animateOnAdd;
     pinAnnotationView.pinColor = MKPinAnnotationColorRed;  //or Green or Purple
 
     return pinAnnotationView;
