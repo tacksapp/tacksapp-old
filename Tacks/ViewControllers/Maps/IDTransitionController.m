@@ -17,7 +17,7 @@
 }
 
 - (float)transitionDamping:(id <UIViewControllerContextTransitioning>)transitionContext {
-    return self.isReversed? 0.9:0.8;
+    return (float) (self.isReversed? 0.9:0.8);
 }
 
 - (float)transitionInitialSpringVelocity:(id <UIViewControllerContextTransitioning>)transitionContext {

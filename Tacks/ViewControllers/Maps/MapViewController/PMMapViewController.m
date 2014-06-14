@@ -13,6 +13,8 @@
 
 @interface PMMapViewController ()
 @property(nonatomic, strong) PMMapViewManager *manager;
+//@property(nonatomic, strong) DetailViewController *detailViewController;
+@property(nonatomic, strong) IDTransitioningDelegate *detailViewTransitioningDelegate;
 
 @property(nonatomic, strong) UIButton *centreMapButton;
 @property(nonatomic, strong) UIButton *revealMenuButton;
@@ -24,7 +26,6 @@
 
 @implementation PMMapViewController
 @synthesize revealMenuButton = _revealMenuButton;
-@synthesize mapView = _mapView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,21 +43,18 @@
 
 -(void)showEditLocationViewController:(Location *)location fromPoint:(CGPoint)animateFromPoint{
 
-    IDTransitioningDelegate *transitioningDelegate= [[IDTransitioningDelegate alloc]init];
-
     UIButton *closeModalButton= [[UIButton alloc] initWithFrame:self.view.bounds];
     [closeModalButton addTarget:self action:@selector(hideEditLocationViewController:) forControlEvents:UIControlEventTouchUpInside];
     [closeModalButton setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:closeModalButton];
 
-    DetailViewController *detailViewController= [[DetailViewController alloc] initWithLocation:location];
-    detailViewController.transitioningDelegate= transitioningDelegate;
+    DetailViewController *detailViewController = [[DetailViewController alloc] initWithLocation:location];
+    detailViewController.transitioningDelegate= self.detailViewTransitioningDelegate;
     detailViewController.modalPresentationStyle= UIModalPresentationCustom;
     detailViewController.modalInPopover= NO;
     detailViewController.animateFromPoint= animateFromPoint;
 
-    NSLog (@"animate from point: %@", NSStringFromCGPoint (animateFromPoint));
-
+    NSLog (@"Edit Location: animate from point: %@", NSStringFromCGPoint (animateFromPoint));
     [self presentViewController:detailViewController animated:YES completion:^{
 
     }];
@@ -112,16 +110,13 @@
     return _mapView;
 }
 
-
 - (PMMapViewManager *)manager {
     if (!_manager){
         _manager = [[PMMapViewManager alloc] initWithMapView:self.mapView];
         _manager.delegate= self;
     }
-
     return _manager;
 }
-
 
 - (UIView *)revealMenuButton {
     if(!_revealMenuButton){
@@ -134,6 +129,14 @@
     }
     return _revealMenuButton;
 }
+
+- (IDTransitioningDelegate *)detailViewTransitioningDelegate {
+    if(!_detailViewTransitioningDelegate){
+        _detailViewTransitioningDelegate = [[IDTransitioningDelegate alloc]init];
+    }
+    return _detailViewTransitioningDelegate;
+}
+
 - (UIButton *)centreMapButton{
     if (!_centreMapButton){
         _centreMapButton= [UIButton buttonWithType:UIButtonTypeCustom];

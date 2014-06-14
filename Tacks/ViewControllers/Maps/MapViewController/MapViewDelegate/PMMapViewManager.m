@@ -12,7 +12,7 @@
 
 
 @interface PMMapViewManager ()
-@property(nonatomic, strong) NSMutableArray *disabledAnnotationAnimations;
+//@property(nonatomic, strong) NSMutableArray *disabledAnnotationAnimations;
 @property(nonatomic, strong) id<MKAnnotation> selectedAnnotation;
 
 @property(nonatomic, weak) MKMapView *mapView;
@@ -28,7 +28,7 @@
         _mapView .delegate= self;
         _mapView .showsUserLocation= true;
 
-        _disabledAnnotationAnimations = [NSMutableArray new];
+//        _disabledAnnotationAnimations = [NSMutableArray new];
 
         UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc]
                 initWithTarget:self action:@selector(didLongTouchOnMap:)];
@@ -51,11 +51,18 @@
 
 //todo refactor
 -(void)createAndEditLocationAtCoordinate:(CLLocationCoordinate2D)coordinate {
-    PMTemporaryAnnotation *annotation= [[PMTemporaryAnnotation alloc]init];
-    annotation.coordinate= coordinate;
-//    annotation.title= @"New place";
+
+    // Create a new Location object
+    // and associate it with the coordinate:
+    Location *newLocation = [Location create];
+    [newLocation setCoordinate:coordinate];
+
+    // TODO consider receiving a PMTemporaryAnnotation if useful?
+    PMAnnotation *annotation = newLocation.annotation;
+    [annotation setAnimateOnAdd:NO];
 
     [self.mapView addAnnotation:annotation];
+    [self editLocation:newLocation]; //TODO use instead: editLocation:fromPoint: for better effect
 }
 
 -(void)editLocation:(Location *)location{
@@ -68,15 +75,11 @@
 #pragma mark Notifications:
 - (void) receiveLocationDidSaveNotification:(NSNotification*)notification{
     Location *location= notification.object;
-    [self.mapView removeAnnotation:location.annotation];
 
-    [self.disabledAnnotationAnimations addObject:location.annotation];
+    [location.annotation setAnimateOnAdd:NO];
     [self.mapView addAnnotation: location.annotation];
 
-//    [self.mapView performSelector:@selector(selectAnnotation:) withObject:location.annotation afterDelay:0.5];
     [self performSelector:@selector(selectLocation:) withObject:location afterDelay:0.2];
-//    [self.mapView.selectedAnnotations arrayByAddingObject:location.annotation];
-//    [self setSelectedAnnotation:location.annotation];
 }
 
 
@@ -104,7 +107,7 @@
     NSLog(@"Changed Region");
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>)annotation{
+- (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(PMAnnotation *)annotation{
 
     static NSString *defaultPinID = @"identifier";
 
@@ -131,7 +134,7 @@
     else{
         pinAnnotationView.annotation = annotation;
     }
-    pinAnnotationView.animatesDrop= ![self.disabledAnnotationAnimations removeObjectAndConfirmChange:annotation];
+    pinAnnotationView.animatesDrop= annotation.animateOnAdd;
     pinAnnotationView.pinColor = MKPinAnnotationColorRed;  //or Green or Purple
 
     return pinAnnotationView;
@@ -177,8 +180,10 @@
     NSLog(@"Did deselect annotation view: %@", view);
 }
 
-// Did select the popout bubble
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+// Did select the pop-out bubble
+- (void)mapView:(MKMapView *)mapView
+ annotationView:(MKAnnotationView *)view
+        calloutAccessoryControlTapped:(UIControl *)control {
 
     if ([view.annotation isKindOfClass:PMAnnotation.class]){
         Location *location= ((PMAnnotation*)view.annotation).location;

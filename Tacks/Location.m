@@ -34,8 +34,6 @@ NSString *const TKLocationDidSaveNotification=@"TKLocationDidSaveNotification";
 }
 
 - (NSString *)title {
-
-
     NSString *title= self.primitiveTitle;
     if (!title || title.length==0){
         return @"New Location";
@@ -82,4 +80,3 @@ NSString *const TKLocationDidSaveNotification=@"TKLocationDidSaveNotification";
     return _sharedAnnotations;
 }
 @end
-

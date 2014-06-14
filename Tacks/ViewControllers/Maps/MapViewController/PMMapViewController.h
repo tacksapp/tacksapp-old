@@ -10,9 +10,10 @@
 @class Location;
 
 @protocol MapDisplayProtocol, PMMapViewControllerDelegate;
-@interface PMMapViewController : UIViewController <MapDisplayProtocol, PMMapViewControllerDelegate>
-
-
+@interface PMMapViewController : UIViewController <MapDisplayProtocol, PMMapViewControllerDelegate>{
+    @protected
+        MKMapView *_mapView;
+}
 @end
 
 @protocol MapDisplayProtocol
