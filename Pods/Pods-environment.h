@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 2
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 3
 
+// CompactConstraint
+#define COCOAPODS_POD_AVAILABLE_CompactConstraint
+#define COCOAPODS_VERSION_MAJOR_CompactConstraint 0
+#define COCOAPODS_VERSION_MINOR_CompactConstraint 1
+#define COCOAPODS_VERSION_PATCH_CompactConstraint 0
+
 // OCMapView
 #define COCOAPODS_POD_AVAILABLE_OCMapView
 #define COCOAPODS_VERSION_MAJOR_OCMapView 0
@@ -77,4 +83,10 @@
 #define COCOAPODS_VERSION_MAJOR_UIImageEffects 0
 #define COCOAPODS_VERSION_MINOR_UIImageEffects 0
 #define COCOAPODS_VERSION_PATCH_UIImageEffects 1
+
+// UIView+Positioning
+#define COCOAPODS_POD_AVAILABLE_UIView_Positioning
+#define COCOAPODS_VERSION_MAJOR_UIView_Positioning 1
+#define COCOAPODS_VERSION_MINOR_UIView_Positioning 0
+#define COCOAPODS_VERSION_PATCH_UIView_Positioning 1
 

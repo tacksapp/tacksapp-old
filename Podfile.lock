@@ -18,31 +18,37 @@ PODS:
   - AFNetworking/UIKit (2.2.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - CompactConstraint (0.1.0)
   - ObjectiveRecord (1.5.0):
     - ObjectiveSugar
   - ObjectiveSugar (1.1.0)
   - OCMapView (0.1.0)
   - SparkInspector (1.2.2)
   - UIImageEffects (0.0.1)
+  - UIView+Positioning (1.0.1)
 
 DEPENDENCIES:
   - AFNetworking
+  - CompactConstraint (~> 0.1)
   - ObjectiveRecord (from `https://github.com/supermarin/ObjectiveRecord.git`)
   - ObjectiveSugar
   - OCMapView (~> 0.1.0)
   - SparkInspector
   - UIImageEffects
+  - UIView+Positioning (~> 1.0)
 
 EXTERNAL SOURCES:
   ObjectiveRecord:
     :git: https://github.com/supermarin/ObjectiveRecord.git
 
 SPEC CHECKSUMS:
-  AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
+  AFNetworking: 47947303319594706f48a55185ea95a95159ab94
+  CompactConstraint: 28050cd1f9c63c67412a0f3d7f758cb0218de192
   ObjectiveRecord: 53dc392fbb4c8a8942f966bab9da8d9441532765
-  ObjectiveSugar: fed588577bcf9733546aeaa089de444e4bab9a52
-  OCMapView: 791bb2afa36034eb6b772d0ddbeb6685bc726e26
-  SparkInspector: 4bd040e553e958cabeb898301d2947f2be93144b
-  UIImageEffects: e1059bcd4c1766f72a78ae6ade359e3f9ee31063
+  ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
+  OCMapView: b6c23a490834c7ac6d4c125cb8431e0ba33abcb9
+  SparkInspector: fbca03a7b5283cab311281f7d2e18820686a5c00
+  UIImageEffects: 69cd1e1f8fc4042a8fefcf4a0727cbf213e4dbfb
+  UIView+Positioning: 870af80983bf495af2cb8a3a15b20e26fcc57ebb
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1
