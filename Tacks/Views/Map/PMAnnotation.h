@@ -8,8 +8,9 @@
 
 @class Location;
 
-
 @interface PMAnnotation : NSObject <MKAnnotation>
-@property(nonatomic, strong) Location *location;
+@property(nonatomic) BOOL animateOnAdd;
+
 - (instancetype)initWithLocation:(Location *)location;
+@property(nonatomic, strong) Location *location;
 @end

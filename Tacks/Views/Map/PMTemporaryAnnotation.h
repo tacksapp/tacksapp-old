@@ -5,7 +5,8 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "PMAnnotation.h"
 
-@interface PMTemporaryAnnotation : MKPointAnnotation
+@interface PMTemporaryAnnotation : PMAnnotation
 
 @end

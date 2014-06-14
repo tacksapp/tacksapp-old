@@ -22,14 +22,20 @@
     return NSStringWithFormat(@"Annotation <%p>:%@, %f,%f", self, self.title, self.coordinate.latitude, self.coordinate.longitude);
 }
 
+
+#pragma mark - Setters:
 - (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate {
+    [self willChangeValueForKey:@"coordinate"];
     [self.location setCoordinate:newCoordinate];
+    [self didChangeValueForKey:@"coordinate"];
 }
+
+
+#pragma mark - Getters:
 
 - (CLLocationCoordinate2D)coordinate {
     return self.location.coordinate;
 }
-
 - (NSString *)title {
     return self.location.title;
 }
