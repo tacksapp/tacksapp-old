@@ -5,18 +5,18 @@
 
 #import "DetailViewController.h"
 #import "Location.h"
-#import "IDTransitioningDelegate.h"
+#import "CompactConstraint.h"
+#import "UIView+CompactConstraint.h"
 #import "UIView+AutoLayout.h"
-
+#import "NSDictionary+ObjectiveSugar.h"
+#import "UIView+Positioning.h"
 
 @interface DetailViewController ()
 @property (nonatomic, strong) UITextField *titleTextField;
 @property (nonatomic, strong) UITextView *subtitleTextView;
 
 - (void)configureViews;
-
 - (void)placeViews;
-
 - (void)constrainViews;
 @end
 
@@ -39,11 +39,9 @@
     [self.location setSubtitle:self.subtitleTextView.text];
     [self.location save];
 }
+
 #pragma mark - UIViewController
 -(void) configureViews{
-    [self.titleTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.subtitleTextView setTranslatesAutoresizingMaskIntoConstraints:NO];
-
     [self.titleTextField setText: self.location.title];
     [self.titleTextField setPlaceholder:@"Title"];
     [self.titleTextField setFont:[UIFont fontWithName:@"GillSans" size:24]];
@@ -63,15 +61,32 @@
     [self.view addSubview:self.subtitleTextView];
 
 }
--(void) constrainViews{
-    [self.titleTextField pinToSuperviewEdges:JRTViewPinLeftEdge|JRTViewPinRightEdge|JRTViewPinTopEdge inset:20];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.titleTextField attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:40]];
 
-    [self.subtitleTextView pinEdge:NSLayoutAttributeTop toEdge:NSLayoutAttributeBottom ofView:self.titleTextField inset:20];
-    [self.subtitleTextView pinEdge:NSLayoutAttributeLeft toEdge:NSLayoutAttributeLeft ofView:self.titleTextField inset:-3];
-    [self.subtitleTextView pinEdge:NSLayoutAttributeRight toEdge:NSLayoutAttributeRight ofView:self.titleTextField inset:-3];
-    [self.subtitleTextView pinToSuperviewEdges:JRTViewPinBottomEdge inset:20];
+- (void)constrainViews {
+
+    self.titleTextField.frame = CGRectMake (20, 20, self.view.width - 40, 40);
+    self.subtitleTextView.frame = CGRectMake (20, self.titleTextField.bottom, self.view.width-40, 40);
+
+//    NSDictionary *metrics = @{
+//    };
+//    NSDictionary *views = NSDictionaryOfVariableBindings(_titleTextField, _subtitleTextView);
+//
+//    [views each:^(id key, UIView *view) {
+//        [view setTranslatesAutoresizingMaskIntoConstraints:NO];
+//    }];
+//    [self.titleTextField pinToSuperviewEdges:JRTViewPinLeftEdge|JRTViewPinTopEdge inset:20];
+//
+//    [self.view addCompactConstraints:@[
+//            @"_titleTextField.height = 40",
+//            @"_titleTextField.width = super.width-40",
+//
+//            @"_subtitleTextView.top = _titleTextField.bottom + 10",
+//            @"_subtitleTextView.left = _titleTextField.left -3",
+//            @"_subtitleTextView.width = _titleTextField.width",
+//            @"_subtitleTextView.bottom = super.bottom - 20",
+//    ] metrics:metrics views:views];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 

@@ -11,12 +11,12 @@
 
 
 @interface DetailViewController : UIViewController
+
 // TODO: maybe shouldn't be strong, is a delegate?
-@property(nonatomic, strong) IDTransitioningDelegate *transitioningDelegate;
-
+//@property(nonatomic, strong) IDTransitioningDelegate *transitioningDelegate;
 //@property(nonatomic) CLLocationCoordinate2D sourceCoordinate;
-@property(nonatomic) CGPoint animateFromPoint;
 
+@property(nonatomic) CGPoint animateFromPoint;
 @property(nonatomic, strong) Location *location;
 
 - (id)initWithLocation:(Location *)location;
